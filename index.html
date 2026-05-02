@@ -2308,6 +2308,7 @@ function showUI() {
   const toggle = document.getElementById(sectionMap.rules.toggle);
   if (body && !body.classList.contains('open')) { body.classList.add('open'); toggle.classList.add('open'); }
   const hint = document.getElementById('startHint'); if (hint) hint.style.display = 'none';
+  if (typeof activateTab === 'function') activateTab('rules');
 }
 
 // ══════════════════════════════════════════════
@@ -2490,6 +2491,7 @@ function resetEditor() {
   });
   document.getElementById('bulkBar').classList.remove('active');
   fileInput.value = '';
+  if (typeof activateTab === 'function') activateTab('import');
 }
 
 // ══════════════════════════════════════════════
