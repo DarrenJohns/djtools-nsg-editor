@@ -1,7 +1,7 @@
 # 🛡️ NSG Rule Editor
 
 <div align="center">
-  <img src="banner.png" alt="DJ Tools — From idea to live in 4 simple steps. No coding required!" width="700">
+  <img src="djtools.png" alt="DJ Tools — From idea to live in 4 simple steps. No coding required!" width="700">
 </div>
 
 > **Built by a tech veteran with 30+ years of solution design expertise who has never been a professional coder — this app was vibe-crafted using [GitHub Copilot CLI](https://github.com/features/copilot/cli/) and deployed to [Azure Static Web Apps](https://azure.microsoft.com/products/app-service/static). From idea 💡 to production web app, without writing a single line of code manually.**
@@ -141,7 +141,7 @@ The entire **~4,000+ line** app was built using [GitHub Copilot CLI](https://git
 djtools-nsg-editor/
 ├── index.html                    # The app (single file, zero dependencies)
 ├── README.md                     # This file
-├── banner.png                    # Repo banner image
+├── djtools.png                   # Repo banner image
 ├── LICENSE                       # MIT license
 ├── SECURITY.md                   # Security reporting policy
 ├── docs/
