@@ -9,10 +9,11 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'><stop offset='0%25' stop-color='%23e04040'/><stop offset='100%25' stop-color='%23b02020'/></linearGradient></defs><path d='M50 8 L88 28 V58 C88 76 72 90 50 96 C28 90 12 76 12 58 V28 Z' fill='url(%23g)'/><path d='M38 52 L46 60 L62 42' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
 <style>
   /* ── Fluent UI / Microsoft 365 Design System ── */
-  :root {
+  :root, [data-theme="light"] {
     --brand-primary: #0f6cbd;
     --brand-hover: #115ea3;
     --brand-pressed: #0f548c;
+    --brand-gradient: linear-gradient(135deg, #0f6cbd 0%, #115ea3 100%);
     --brand-subtle: #ebf3fc;
     --brand-bg: #0f6cbd;
     --bg-base: #fafafa;
@@ -35,54 +36,109 @@
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
-    --shadow-sm: 0 4px 20px rgba(0,120,212,0.10);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
     --shadow-md: 0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 8px 16px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.12);
-    --font-sans: 'Segoe UI', system-ui, sans-serif;
+    --font-sans: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     --transition: 120ms cubic-bezier(0.33, 0, 0.67, 1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); background-color: var(--bg-base); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  *:focus { outline: none; }
+  *:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: 4px; }
+  html { overflow-y: scroll; }
+  body { font-family: var(--font-sans); background-color: var(--bg-base); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; padding-top: 120px;
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg opacity='0.18'%3E%3Ccircle cx='80' cy='80' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='200' cy='40' r='4' fill='%230f6cbd'/%3E%3Ccircle cx='320' cy='100' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='480' cy='60' r='4.5' fill='%230f6cbd'/%3E%3Ccircle cx='560' cy='140' r='5' fill='%238764b8'/%3E%3Ccircle cx='140' cy='200' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='300' cy='240' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='440' cy='200' r='4' fill='%23c4314b'/%3E%3Ccircle cx='60' cy='340' r='4.5' fill='%238764b8'/%3E%3Ccircle cx='220' cy='380' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='380' cy='340' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='520' cy='320' r='4' fill='%230f6cbd'/%3E%3Ccircle cx='120' cy='480' r='5' fill='%23c4314b'/%3E%3Ccircle cx='280' cy='520' r='4.5' fill='%230f6cbd'/%3E%3Ccircle cx='460' cy='460' r='5' fill='%238764b8'/%3E%3Ccircle cx='560' cy='520' r='6' fill='%230e7a0d'/%3E%3Cline x1='80' y1='80' x2='200' y2='40' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='200' y1='40' x2='320' y2='100' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='320' y1='100' x2='480' y2='60' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='480' y1='60' x2='560' y2='140' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='80' y1='80' x2='140' y2='200' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='140' y1='200' x2='300' y2='240' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='440' y2='200' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='440' y1='200' x2='560' y2='140' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='60' y1='340' x2='220' y2='380' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='220' y1='380' x2='380' y2='340' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='380' y1='340' x2='520' y2='320' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='140' y1='200' x2='60' y2='340' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='220' y2='380' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='380' y2='340' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='440' y1='200' x2='520' y2='320' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='60' y1='340' x2='120' y2='480' stroke='%23c4314b' stroke-width='1.2'/%3E%3Cline x1='220' y1='380' x2='280' y2='520' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='380' y1='340' x2='460' y2='460' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='520' y1='320' x2='560' y2='520' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='120' y1='480' x2='280' y2='520' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='280' y1='520' x2='460' y2='460' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='460' y1='460' x2='560' y2='520' stroke='%230e7a0d' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E"),
       radial-gradient(ellipse at 0% 0%, rgba(15,108,189,0.06) 0%, transparent 60%),
       radial-gradient(ellipse at 100% 100%, rgba(14,122,13,0.05) 0%, transparent 60%);
     background-attachment: fixed; min-height: 100vh; }
-  .container { max-width: 1440px; margin: 0 auto; padding: 20px 24px; }
-  /* ── Header ── */
-  header { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: var(--text-on-brand); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; box-shadow: 0 2px 12px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 800; }
+  .container { max-width: 1440px; margin: 0 auto; padding: 48px 24px 16px; }
+  /* ── Header (fixed) ── */
+  header { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: var(--text-on-brand); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
   header svg { width: 28px; height: 28px; fill: white; }
   header h1 { font-size: 1.1rem; font-weight: 700; }
   .nav-brand { display: flex; align-items: center; gap: 8px; }
-  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a { color: rgba(255,255,255,0.85); padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 500; transition: background 0.2s; text-decoration: none; white-space: nowrap; }
-  .nav-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
   .nav-actions { display: flex; gap: 8px; align-items: center; }
-  .nav-btn { background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; }
+  .nav-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; backdrop-filter: blur(4px); }
   .nav-btn:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── Tab Strip (fixed under header) ── */
+  .tab-strip {
+    position: fixed;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 998;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    max-width: 1400px;
+    width: calc(100% - 48px);
+    padding: 0 24px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .tab-strip { background: rgba(30,33,40, 0.55); }
+  .tab-strip .tab {
+    flex: 0 0 auto;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    padding: 12px 14px;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+    font-family: inherit;
+    user-select: none;
+  }
+  .tab-strip .tab:hover { color: var(--text-primary); }
+  .tab-strip .tab.active { color: var(--brand-primary); border-bottom-color: var(--brand-primary); }
+  .tab-strip .tab .tab-badge {
+    font-size: 9px;
+    background: #f0f7ff;
+    color: var(--brand-primary);
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 5px;
+    font-weight: 700;
+    border: 1px solid #b3d4f0;
+  }
+  [data-theme="dark"] .tab-strip .tab .tab-badge { background: #1a2e4a; color: #6db3f2; border-color: #2a5a8a; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
 
   /* ── Buttons ── */
   .btn { font-family: var(--font-sans); font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); padding: 7px 16px; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; display: inline-flex; align-items: center; gap: 4px; }
-  .btn-primary { background: linear-gradient(180deg, #1a7fd4 0%, var(--brand-primary) 100%); color: var(--text-on-brand); box-shadow: 0 1px 3px rgba(15,108,189,0.3); }
-  .btn-primary:hover { background: linear-gradient(180deg, #1a8ae6 0%, var(--brand-hover) 100%); }
+  .btn-primary { background: var(--brand-primary); color: var(--text-on-brand); }
+  .btn-primary:hover { background: var(--brand-hover); }
   .btn-outline { background: var(--bg-layer1); border: 1px solid var(--border-default); color: var(--text-primary); }
   .btn-outline:hover { background: var(--bg-hover); border-color: var(--brand-primary); }
-  .btn-success { background: linear-gradient(180deg, #13961a 0%, var(--status-success) 100%); color: white; box-shadow: 0 1px 3px rgba(14,122,13,0.3); }
-  .btn-success:hover { background: linear-gradient(180deg, #15a81c 0%, #0c6b0b 100%); }
-  .btn-danger { background: linear-gradient(180deg, #d9364f 0%, var(--status-danger) 100%); color: white; }
+  .btn-success { background: var(--status-success); color: white; }
+  .btn-success:hover { filter: brightness(1.08); }
+  .btn-danger { background: var(--status-danger); color: white; }
+  .btn-danger:hover { filter: brightness(1.08); }
   .btn-sm { font-size: 13px; padding: 4px 10px; }
   .btn-action-edit, .btn-action-dup, .btn-action-del { background: transparent; border: 1px solid var(--border-default); color: var(--text-secondary); font-size: 14px; border-radius: var(--radius-sm); padding: 2px 5px; cursor: pointer; transition: all 0.15s ease; line-height: 1; display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; flex-shrink: 0; }
   .btn-action-edit svg, .btn-action-dup svg, .btn-action-del svg { flex-shrink: 0; }
-  .btn-action-edit:hover { background: var(--brand-subtle); border-color: var(--brand-default); color: var(--brand-default); }
+  .btn-action-edit:hover { background: var(--brand-subtle); border-color: var(--brand-primary); color: var(--brand-primary); }
   .btn-action-dup:hover { background: #e8f8e8; border-color: #0e7a0d; color: #0e7a0d; }
   .btn-action-del:hover { background: #fce8ec; border-color: #c4314b; color: #c4314b; }
   .rule-actions { display: flex; gap: 3px; white-space: nowrap; overflow: visible; align-items: center; flex-wrap: nowrap; }
 
   /* ── Welcome Modal ── */
-  .welcome-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .welcome-overlay { position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
   .welcome-overlay.active { opacity: 1; pointer-events: auto; }
   .welcome-card { background: var(--bg-layer1); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 540px; width: 90%; overflow: hidden; }
-  .welcome-banner { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: white; padding: 28px 32px 20px; text-align: center; }
+  .welcome-banner { background: var(--brand-gradient); color: white; padding: 28px 32px 20px; text-align: center; }
   .welcome-banner h2 { font-size: 22px; margin-bottom: 6px; }
   .welcome-banner p { font-size: 14px; opacity: 0.85; }
   .welcome-body { padding: 24px 32px 28px; }
@@ -92,14 +148,14 @@
   .welcome-body .btn { width: 100%; justify-content: center; font-size: 14px; padding: 10px; }
 
   /* ── Drop Zone ── */
-  .drop-zone { border: 2px dashed var(--brand-primary); border-radius: 16px; padding: 36px; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--bg-layer1); position: relative; }
-  .drop-zone:hover, .drop-zone.drag-over { background: rgba(0,120,212,0.06); border-color: #50E6FF; }
+  .drop-zone { border: 2px dashed #a0c4e8; border-radius: var(--radius-lg); padding: 36px; text-align: center; cursor: pointer; transition: all 0.2s; background: linear-gradient(180deg, #f0f7ff 0%, #fafcff 100%); position: relative; }
+  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--brand-primary); background: linear-gradient(180deg, #e0efff 0%, #f0f7ff 100%); box-shadow: 0 0 20px rgba(15,108,189,0.1); }
   .drop-icon { font-size: 3rem; margin-bottom: 12px; }
   .drop-zone h3 { font-size: 1.1rem; font-weight: 700; color: var(--brand-primary); margin-bottom: 6px; }
   .drop-zone p { color: var(--text-secondary); font-size: 0.9rem; }
   .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 
-  /* ── Sections ── */
+  /* ── Sections (collapsibility neutralised inside tab panes) ── */
   .summary-overview { margin-top: 16px; }
   .section-collapsible { margin-top: 24px; }
   .section-header { display: flex; align-items: center; gap: 10px; padding: 0 0 12px 0; cursor: pointer; user-select: none; }
@@ -108,6 +164,13 @@
   .section-toggle.open { transform: rotate(90deg); }
   .section-body { max-height: 0; overflow: hidden; background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: 14px; box-shadow: var(--shadow-sm); transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 16px; }
   .section-body.open { max-height: 5000px; padding: 16px; }
+  /* Inside a tab pane, sections are always expanded — tabs replace collapsibility */
+  .tab-pane .section-collapsible { margin-top: 0; }
+  .tab-pane .section-collapsible + .section-collapsible { margin-top: 24px; }
+  .tab-pane .section-header { cursor: default; }
+  .tab-pane .section-toggle { display: none; }
+  .tab-pane .section-body { max-height: none !important; padding: 16px !important; overflow: visible; }
+  .tab-pane #startHint { display: none !important; }
   .section-badge { font-size: 0.78rem; font-weight: 600; padding: 2px 10px; border-radius: 10px; background: var(--brand-subtle); color: var(--brand-primary); border: 1px solid #b4d6fa; }
 
   /* ── Warnings ── */
@@ -327,10 +390,35 @@
   .shortcut-desc { font-size: 13px; color: var(--text-secondary); }
 
   /* ══ DARK THEME ══ */
-  [data-theme="dark"] { --brand-subtle: #1a2e4a; --bg-base: #141414; --bg-layer1: #1f1f1f; --bg-layer2: #292929; --bg-hover: #333333; --border-default: #404040; --border-subtle: #333333; --text-primary: #e5e5e5; --text-secondary: #a0a0a0; --text-tertiary: #6a6a6a; --status-danger-bg: #2d1a1f; --status-success-bg: #1a2d1a; --status-warning-bg: #2d261a; --status-info-bg: #1a2540; }
-  [data-theme="dark"] header { background: linear-gradient(135deg, #0e4a8a 0%, #0a2e5c 100%); }
-  [data-theme="dark"] .drop-zone { background: var(--bg-layer1); border-color: #2a4a6a; }
-  [data-theme="dark"] .drop-zone:hover, [data-theme="dark"] .drop-zone.drag-over { background: rgba(0,120,212,0.1); border-color: #3a6a9a; }
+  [data-theme="dark"] {
+    --brand-primary: #479ef5;
+    --brand-hover: #62abf5;
+    --brand-pressed: #2886e0;
+    --brand-gradient: linear-gradient(135deg, #1b3a5c 0%, #0f2d4a 100%);
+    --brand-subtle: #1a2e4a;
+    --bg-base: #141414;
+    --bg-layer1: #1f1f1f;
+    --bg-layer2: #292929;
+    --bg-hover: #333333;
+    --border-default: #404040;
+    --border-subtle: #333333;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #6a6a6a;
+    --status-danger: #e87575;
+    --status-danger-bg: #3d1f25;
+    --status-success: #54b054;
+    --status-success-bg: #1f3d1f;
+    --status-warning: #f5a623;
+    --status-warning-bg: #3d2f1f;
+    --status-info-bg: #1f2d3d;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.4), 0 16px 48px rgba(0,0,0,0.5);
+  }
+  [data-theme="dark"] header { background: linear-gradient(135deg, #1a1d24 0%, #12151a 100%); }
+  [data-theme="dark"] .drop-zone { background: linear-gradient(180deg, rgba(71,158,245,0.06) 0%, rgba(71,158,245,0.02) 100%); border-color: rgba(71,158,245,0.4); }
+  [data-theme="dark"] .drop-zone:hover, [data-theme="dark"] .drop-zone.drag-over { background: linear-gradient(180deg, rgba(71,158,245,0.12) 0%, rgba(71,158,245,0.05) 100%); border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(71,158,245,0.18); }
 
   [data-theme="dark"] .section-header .section-toggle { color: var(--brand-primary); }
   [data-theme="dark"] .warnings-panel { border-color: #664a2a; }
@@ -384,18 +472,21 @@
     <svg viewBox="0 0 100 100" style="width:28px;height:28px;"><defs><linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e04040"/><stop offset="100%" stop-color="#b02020"/></linearGradient></defs><path d="M50 8 L88 28 V58 C88 76 72 90 50 96 C28 90 12 76 12 58 V28 Z" fill="url(#hg)"/><path d="M38 52 L46 60 L62 42" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
     <h1>Azure NSG Rule Editor</h1>
   </div>
-  <div class="nav-links" id="navLinks">
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">📊 Summary</a>
-    <a href="#rulesSection">🔒 Rules</a>
-    <a href="#analysisSection">🔍 Analysis</a>
-    <a href="#portsSection">🌐 Ports</a>
-    <a href="#auditSection">📋 Audit Log</a>
-  </div>
   <div class="nav-actions">
     <button class="nav-btn" onclick="openShortcutsModal()">⌨️ Shortcuts</button>
     <button class="nav-btn" id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
   </div>
 </header>
+
+<!-- Tab Strip -->
+<nav class="tab-strip" id="tabStrip" role="tablist" aria-label="App sections">
+  <button class="tab active" role="tab" data-tab="import"    onclick="activateTab('import')">📥 Import</button>
+  <button class="tab"        role="tab" data-tab="summary"   onclick="activateTab('summary')">📊 Summary</button>
+  <button class="tab"        role="tab" data-tab="rules"     onclick="activateTab('rules')">🔒 Rules</button>
+  <button class="tab"        role="tab" data-tab="tools"     onclick="activateTab('tools')">🔧 Tools</button>
+  <button class="tab"        role="tab" data-tab="reference" onclick="activateTab('reference')">📚 Reference</button>
+  <button class="tab"        role="tab" data-tab="audit"     onclick="activateTab('audit')">📋 Audit Log</button>
+</nav>
 
 <!-- Welcome Modal -->
 <div class="welcome-overlay active" id="welcomeModal">
@@ -420,6 +511,9 @@
 </div>
 
 <div class="container">
+
+  <!-- ═══════ TAB: IMPORT ═══════ -->
+  <div class="tab-pane active" data-tab="import">
   <!-- Drop Zone -->
   <div class="drop-zone" id="dropZone">
     <div class="drop-icon">📂</div>
@@ -445,6 +539,14 @@
     </div>
   </div>
 
+  <!-- Start from scratch -->
+  <div style="text-align:center;margin-top:12px;" id="scratchSection">
+    <button class="btn btn-outline" onclick="startFromScratch()">Or start from scratch — create a new NSG</button>
+  </div>
+  </div><!-- /tab-pane import -->
+
+  <!-- ═══════ TAB: SUMMARY ═══════ -->
+  <div class="tab-pane" data-tab="summary">
   <!-- Rule Summary (static overview) -->
   <div class="summary-overview" id="statsSection" style="display:none;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
@@ -454,7 +556,10 @@
     <div class="stats-panel" id="statsPanel"></div>
     <div class="limits-gauge" id="limitsGauge"></div>
   </div>
+  </div><!-- /tab-pane summary -->
 
+  <!-- ═══════ TAB: RULES ═══════ -->
+  <div class="tab-pane" data-tab="rules">
   <!-- Security Rules -->
   <div class="section-collapsible" id="rulesSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('rules')" style="position:relative;">
@@ -489,7 +594,7 @@
         <button class="btn btn-outline" onclick="openTemplatesModal()">📋 Templates</button>
         <button class="btn btn-outline" onclick="undoAction()" id="undoBtn" disabled title="Undo (Ctrl+Z)">↩ Undo</button>
         <button class="btn btn-outline" onclick="redoAction()" id="redoBtn" disabled title="Redo (Ctrl+Y)">↪ Redo</button>
-        <button class="btn btn-outline" onclick="document.getElementById('networkToolsSection').style.display='block'; var b=document.getElementById('networkToolsBody'); if(!b.classList.contains('open')) toggleSection('networkTools'); setTimeout(function(){var sb=document.getElementById('whatifSimulateBtn'); sb.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){var tip=document.getElementById('whatifTip'); tip.classList.add('show'); setTimeout(function(){tip.classList.remove('show');},3500);},600);},200);" title="Test which rule matches specific traffic">🔍 What-If</button>
+        <button class="btn btn-outline" onclick="activateTab('tools'); setTimeout(function(){var sb=document.getElementById('whatifSimulateBtn'); if(sb){sb.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){var tip=document.getElementById('whatifTip'); if(tip){tip.classList.add('show'); setTimeout(function(){tip.classList.remove('show');},3500);}},600);}},200);" title="Test which rule matches specific traffic">🔍 What-If</button>
         <button class="btn btn-success" onclick="openExportModal()">⬇ Export</button>
         <button class="btn btn-outline" onclick="resetEditor()">✕ Clear</button>
       </div>
@@ -582,6 +687,10 @@
     </div>
   </div>
 
+  </div><!-- /tab-pane rules -->
+
+  <!-- ═══════ TAB: TOOLS ═══════ -->
+  <div class="tab-pane" data-tab="tools">
   <!-- Network Tools (CIDR Calc + What-If + Common Ports) -->
   <div class="section-collapsible" id="networkToolsSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('networkTools')">
@@ -625,6 +734,10 @@
     </div>
   </div>
 
+  </div><!-- /tab-pane tools -->
+
+  <!-- ═══════ TAB: REFERENCE ═══════ -->
+  <div class="tab-pane" data-tab="reference">
   <!-- Service Tag Reference -->
   <div class="section-collapsible" id="serviceTagSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('serviceTags')">
@@ -665,6 +778,10 @@
     </div>
   </div>
 
+  </div><!-- /tab-pane reference -->
+
+  <!-- ═══════ TAB: AUDIT ═══════ -->
+  <div class="tab-pane" data-tab="audit">
   <!-- Audit Log -->
   <div class="section-collapsible" id="auditSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('audit')">
@@ -679,11 +796,8 @@
       <div style="max-height:300px;overflow-y:auto;" id="auditLogContainer"></div>
     </div>
   </div>
+  </div><!-- /tab-pane audit -->
 
-  <!-- Start from scratch -->
-  <div style="text-align:center;margin-top:12px;" id="scratchSection">
-    <button class="btn btn-outline" onclick="startFromScratch()">Or start from scratch — create a new NSG</button>
-  </div>
 </div>
 
 <!-- Footer -->
@@ -760,7 +874,7 @@
         <div class="form-group">
           <label>Destination Port Range(s) <span class="required">*</span></label>
           <input type="text" id="ruleDestPort" placeholder="e.g. 80, 443, 8080-8090">
-          <span class="help">Port, range, or *. Comma-separated for multiple. <a href="#" onclick="event.preventDefault();toggleSection('networkTools');" style="color:var(--brand-primary);">📡 Port reference</a></span>
+          <span class="help">Port, range, or *. Comma-separated for multiple. <a href="#" onclick="event.preventDefault();activateTab('reference');" style="color:var(--brand-primary);">📡 Port reference</a></span>
         </div>
         <div class="form-group full-width">
           <label>Description</label>
@@ -4350,6 +4464,30 @@ document.querySelectorAll('.col-resize').forEach(handle => {
     document.addEventListener('mouseup', onMouseUp);
   });
 });
+
+/* ── Tab navigation ── */
+function activateTab(key) {
+  document.querySelectorAll('.tab-strip .tab').forEach(b => b.classList.toggle('active', b.dataset.tab === key));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.dataset.tab === key));
+  if (location.hash !== '#' + key) history.replaceState(null, '', '#' + key);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function activateTabFromHash() {
+  const hash = (location.hash || '').replace('#', '');
+  if (!hash) return;
+  const map = {
+    rulesSection: 'rules', emptyState: 'rules', analysisSection: 'rules',
+    statsSection: 'summary',
+    securitySection: 'rules',
+    networkToolsSection: 'tools',
+    serviceTagSection: 'reference', portsSection: 'reference',
+    auditSection: 'audit'
+  };
+  const key = map[hash] || hash;
+  if (document.querySelector(`.tab-pane[data-tab="${key}"]`)) activateTab(key);
+}
+window.addEventListener('hashchange', activateTabFromHash);
+document.addEventListener('DOMContentLoaded', activateTabFromHash);
 
 </script>
 </body>
