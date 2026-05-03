@@ -394,10 +394,13 @@
   .tips-dot.done { background: var(--status-success); }
 
   /* ── Keyboard Shortcuts Modal ── */
-  .shortcuts-grid { display: grid; gap: 8px; }
-  .shortcut-item { display: flex; align-items: center; gap: 12px; padding: 6px 0; }
-  .shortcut-key { font-family: 'Cascadia Code', monospace; font-size: 12px; background: var(--bg-layer2); border: 1px solid var(--border-default); border-radius: 4px; padding: 2px 8px; min-width: 60px; text-align: center; font-weight: 600; }
+  .shortcuts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 8px; }
+  .shortcut-item { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: var(--radius-sm); background: var(--bg-layer2); }
+  .shortcut-key { min-width: 36px; text-align: center; padding: 4px 8px; background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: var(--radius-sm); font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 13px; font-weight: 600; }
   .shortcut-desc { font-size: 13px; color: var(--text-secondary); }
+  .modal-banner { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: #fff; padding: 24px 28px 18px; text-align: center; }
+  .modal-banner h2 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+  .modal-close-row { display: flex; justify-content: flex-end; margin-top: 8px; }
 
   /* ══ DARK THEME ══ */
   [data-theme="dark"] {
@@ -1041,11 +1044,10 @@
 </div>
 
 <!-- Keyboard Shortcuts Modal -->
-<div class="modal-overlay" id="shortcutsModal">
-  <div class="modal" style="width:440px;">
-    <div class="modal-header">
-      <h3>⌨ Keyboard Shortcuts</h3>
-      <button class="modal-close" onclick="closeShortcutsModal()">&times;</button>
+<div class="modal-overlay" id="shortcutsModal" onclick="if(event.target===this)closeShortcutsModal()">
+  <div class="modal" style="max-width:520px;width:90%;" role="dialog" aria-modal="true">
+    <div class="modal-banner">
+      <h2>⌨️ Keyboard Shortcuts</h2>
     </div>
     <div class="modal-body">
       <div class="shortcuts-grid">
@@ -1058,6 +1060,7 @@
         <div class="shortcut-item"><span class="shortcut-key">Esc</span><span class="shortcut-desc">Close any open modal</span></div>
         <div class="shortcut-item"><span class="shortcut-key">Del</span><span class="shortcut-desc">Delete selected rules</span></div>
       </div>
+      <div class="modal-close-row"><button class="btn btn-outline" onclick="closeShortcutsModal()">Close</button></div>
     </div>
   </div>
 </div>
