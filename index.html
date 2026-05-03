@@ -674,14 +674,13 @@
   <!-- ═══════ TAB: TOOLS ═══════ -->
   <div class="tab-pane" data-tab="tools">
   <!-- Network Tools (CIDR Calc + What-If + Common Ports) -->
+  <!-- What-If Traffic Simulator -->
   <div class="section-collapsible" id="networkToolsSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('networkTools')">
       <span class="section-toggle" id="networkToolsToggle">▶</span>
-      <h3>🔧 Network Tools</h3>
+      <h3>🔍 What-If Traffic Simulator</h3>
     </div>
     <div class="section-body" id="networkToolsBody">
-      <!-- What-If Simulator -->
-      <h4 style="font-size:13px;margin-bottom:8px;color:var(--brand-primary);">🔍 What-If Traffic Simulator</h4>
       <p style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Test whether specific traffic would be allowed or denied by your NSG rules.</p>
       <div class="whatif-form">
         <div class="form-group"><label>Direction</label><select id="whatifDirection"><option value="Inbound">Inbound</option><option value="Outbound">Outbound</option></select></div>
@@ -694,18 +693,6 @@
       <button class="btn btn-primary" id="whatifSimulateBtn" onclick="runWhatIf()">▶ Simulate</button>
       <div class="whatif-tip" id="whatifTip">👆 Fill in the fields above, then click <strong>Simulate</strong> to test your rules</div>
       <div id="whatifResults"></div>
-
-      <hr style="border:none;border-top:1px solid var(--border-subtle);margin:20px 0;">
-
-      <!-- CIDR Calculator -->
-      <h4 style="font-size:13px;margin-bottom:8px;color:var(--brand-primary);">🧮 CIDR / Subnet Calculator</h4>
-      <div class="cidr-form">
-        <div class="form-group" style="flex:1;"><label>CIDR Notation</label><input type="text" id="cidrInput" placeholder="e.g. 10.0.1.0/24"></div>
-        <button class="btn btn-primary" onclick="calculateCidr()" style="margin-bottom:2px;">Calculate</button>
-        <button class="btn btn-outline" onclick="document.getElementById('cidrInput').value=''; document.getElementById('cidrResults').innerHTML='';" style="margin-bottom:2px;">Clear</button>
-      </div>
-      <div class="cidr-results" id="cidrResults"></div>
-
       <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
         <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
         <ul style="list-style:none;font-size:12px;line-height:1.8;">
@@ -713,6 +700,22 @@
           <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Default Outbound Access</a> — Understand Azure's default outbound connectivity and how NSGs interact with it</li>
         </ul>
       </div>
+    </div>
+  </div>
+
+  <!-- CIDR / Subnet Calculator -->
+  <div class="section-collapsible" id="cidrSection" style="display:none;">
+    <div class="section-header" onclick="toggleSection('cidr')">
+      <span class="section-toggle" id="cidrToggle">▶</span>
+      <h3>🧮 CIDR / Subnet Calculator</h3>
+    </div>
+    <div class="section-body" id="cidrBody">
+      <div class="cidr-form">
+        <div class="form-group" style="flex:1;"><label>CIDR Notation</label><input type="text" id="cidrInput" placeholder="e.g. 10.0.1.0/24"></div>
+        <button class="btn btn-primary" onclick="calculateCidr()" style="margin-bottom:2px;">Calculate</button>
+        <button class="btn btn-outline" onclick="document.getElementById('cidrInput').value=''; document.getElementById('cidrResults').innerHTML='';" style="margin-bottom:2px;">Clear</button>
+      </div>
+      <div class="cidr-results" id="cidrResults"></div>
     </div>
   </div>
 
@@ -1578,6 +1581,7 @@ const sectionMap = {
   ports: { toggle: 'portsToggle', body: 'portsBody' },
   security: { toggle: 'securityToggle', body: 'securityBody' },
   networkTools: { toggle: 'networkToolsToggle', body: 'networkToolsBody' },
+  cidr: { toggle: 'cidrToggle', body: 'cidrBody' },
   audit: { toggle: 'auditToggle', body: 'auditBody' },
 };
 
@@ -2305,7 +2309,7 @@ function loadNsg(nsg, warnings) {
 function showUI() {
   document.getElementById('dropZone').style.display = '';
   document.getElementById('scratchSection').style.display = 'none';
-  ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
+  ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','cidrSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
   updateDisplay();
   // Auto-expand the rules section after import
   const body = document.getElementById(sectionMap.rules.body);
@@ -2489,7 +2493,7 @@ function resetEditor() {
   clearAutoSave();
   document.getElementById('dropZone').style.display = '';
   document.getElementById('scratchSection').style.display = '';
-  ['toolbar','rulesSection','emptyState','warningsPanel','exprBanner','statsSection','analysisSection','portsSection','serviceTagSection','securitySection','networkToolsSection','auditSection'].forEach(id => {
+  ['toolbar','rulesSection','emptyState','warningsPanel','exprBanner','statsSection','analysisSection','portsSection','serviceTagSection','securitySection','networkToolsSection','cidrSection','auditSection'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = 'none';
   });
