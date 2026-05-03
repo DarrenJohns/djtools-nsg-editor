@@ -2719,7 +2719,7 @@ function updateStats() {
   const colorClass = pct < 50 ? 'green' : pct < 80 ? 'amber' : 'red';
   document.getElementById('limitsGauge').innerHTML = (() => {
     const segments = 20;
-    const filled = Math.max(1, Math.round((pct / 100) * segments));
+    const filled = pct === 0 ? 0 : Math.max(1, Math.round((pct / 100) * segments));
     const color = pct < 50 ? '#0e7a0d' : pct < 80 ? '#f7630c' : '#c4314b';
     let bars = '';
     for (let i = 0; i < segments; i++) {
@@ -2731,7 +2731,7 @@ function updateStats() {
       <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:var(--bg-layer1);border-radius:var(--radius-sm);border:1px solid var(--border-default);">
         <span style="font-size:12px;font-weight:600;color:var(--text-primary);white-space:nowrap;">📏 Rule Capacity</span>
         <div style="display:flex;gap:2px;">${bars}</div>
-        <span style="font-size:16px;font-weight:700;color:${color};">${pct.toFixed(0)}%</span>
+        <span style="font-size:16px;font-weight:700;color:${pct === 0 ? 'var(--text-secondary)' : color};">${pct.toFixed(0)}%</span>
         <span style="font-size:11px;color:var(--text-secondary);white-space:nowrap;">(${rules.length}/${maxRules})</span>
       </div>
     </div>
