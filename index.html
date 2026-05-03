@@ -568,6 +568,30 @@
     </div>
     <div class="stats-panel" id="statsPanel"></div>
   </div>
+
+  <div class="section-collapsible" id="securitySection" style="display:none;">
+    <div class="section-header" onclick="toggleSection('security')">
+      <span class="section-toggle" id="securityToggle">▶</span>
+      <h3>🛡️ Security & Compliance</h3>
+      <span class="section-badge" id="securityBadge">—</span>
+    </div>
+    <div class="section-body" id="securityBody">
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.6;">
+        Your NSG ruleset is automatically assessed against industry security benchmarks. The score reflects common risks such as
+        exposed management ports (RDP/SSH), overly broad address ranges, missing deny rules, and absent rule descriptions.
+        Address any flagged items below to strengthen your security posture.
+      </p>
+      <div id="securityContent"></div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
+        <ul style="list-style:none;font-size:12px;line-height:1.8;">
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Overview</a> — How Azure Network Security Groups filter traffic between Azure resources</li>
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/security/benchmark/azure/security-controls-v3-network-security" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Azure Security Benchmark v3 — Network Security</a> — Microsoft's best practice controls for network segmentation and protection</li>
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">How NSGs Work</a> — Understand rule evaluation order, priority, and implicit deny behaviour</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   </div><!-- /tab-pane summary -->
 
   <!-- ═══════ TAB: RULES ═══════ -->
@@ -662,30 +686,6 @@
     <p>No rules defined. Click <strong>+ Add Rule</strong> or <strong>📋 Templates</strong> to get started.</p>
   </div>
 
-  <!-- Security & Compliance -->
-  <div class="section-collapsible" id="securitySection" style="display:none;">
-    <div class="section-header" onclick="toggleSection('security')">
-      <span class="section-toggle" id="securityToggle">▶</span>
-      <h3>🛡️ Security & Compliance</h3>
-      <span class="section-badge" id="securityBadge">—</span>
-    </div>
-    <div class="section-body" id="securityBody">
-      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.6;">
-        Your NSG ruleset is automatically assessed against industry security benchmarks. The score reflects common risks such as
-        exposed management ports (RDP/SSH), overly broad address ranges, missing deny rules, and absent rule descriptions.
-        Address any flagged items below to strengthen your security posture.
-      </p>
-      <div id="securityContent"></div>
-      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
-        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
-        <ul style="list-style:none;font-size:12px;line-height:1.8;">
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Overview</a> — How Azure Network Security Groups filter traffic between Azure resources</li>
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/security/benchmark/azure/security-controls-v3-network-security" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Azure Security Benchmark v3 — Network Security</a> — Microsoft's best practice controls for network segmentation and protection</li>
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">How NSGs Work</a> — Understand rule evaluation order, priority, and implicit deny behaviour</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
   </div><!-- /tab-pane rules -->
 
@@ -4512,7 +4512,7 @@ function activateTabFromHash() {
   const map = {
     rulesSection: 'rules', emptyState: 'rules', analysisSection: 'reference',
     statsSection: 'summary',
-    securitySection: 'rules',
+    securitySection: 'summary',
     networkToolsSection: 'tools',
     serviceTagSection: 'reference', portsSection: 'reference',
     auditSection: 'audit'
