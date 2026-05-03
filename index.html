@@ -60,6 +60,7 @@
   .nav-brand { display: flex; align-items: center; gap: 8px; }
   .nav-actions { display: flex; gap: 8px; align-items: center; }
   .nav-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; backdrop-filter: blur(4px); }
+  .nav-btn-icon { font-size: 16px; padding: 6px 12px; line-height: 1; }
   .nav-btn:hover { background: rgba(255,255,255,0.25); }
 
   /* ── Tab Strip (fixed under header) ── */
@@ -482,8 +483,8 @@
     <h1>Azure NSG Rule Editor</h1>
   </div>
   <div class="nav-actions">
-    <button class="nav-btn" onclick="openShortcutsModal()">⌨️ Shortcuts</button>
-    <button class="nav-btn" id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <button class="nav-btn nav-btn-icon" onclick="openShortcutsModal()" title="Keyboard shortcuts (?)">⌨</button>
+    <button class="nav-btn nav-btn-icon" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
   </div>
 </header>
 
@@ -1102,7 +1103,7 @@ function toggleTheme() {
   const html = document.documentElement;
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
-  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
   localStorage.setItem('nsg-editor-theme', next);
 }
 (function initTheme() {
@@ -1112,7 +1113,7 @@ function toggleTheme() {
   else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { theme = 'dark'; }
   if (theme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.addEventListener('DOMContentLoaded', () => { document.getElementById('themeToggle').textContent = '☀️ Light Mode'; });
+    document.addEventListener('DOMContentLoaded', () => { document.getElementById('themeToggle').textContent = '☀️'; });
   }
 })();
 
