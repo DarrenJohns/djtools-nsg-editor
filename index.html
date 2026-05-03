@@ -230,6 +230,14 @@
   tr.selected td { background: var(--brand-subtle); }
   .empty-state { text-align: center; padding: 32px; color: var(--text-secondary); font-size: 14px; }
 
+  /* No-data placeholder shown in non-Import tabs before import */
+  .tab-empty-notice { max-width: 540px; margin: 56px auto; padding: 36px 32px; background: var(--bg-layer1); border: 1px dashed var(--border-default); border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); }
+  .tab-empty-notice .tab-empty-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .tab-empty-notice h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .tab-empty-notice p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+  .tab-empty-notice a { color: var(--brand-primary); font-weight: 600; cursor: pointer; }
+  body.has-data .tab-empty-notice { display: none; }
+
   /* ── Analysis Panels ── */
   .analysis-panel { padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 8px; }
   .analysis-panel h4 { font-size: 14px; margin-bottom: 6px; }
@@ -547,6 +555,11 @@
 
   <!-- ═══════ TAB: SUMMARY ═══════ -->
   <div class="tab-pane" data-tab="summary">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">📊</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to drop a Bicep / ARM / Terraform / JSON file, or start fresh — your rule summary will appear here.</p>
+  </div>
   <!-- Rule Summary (static overview) -->
   <div class="summary-overview" id="statsSection" style="display:none;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
@@ -560,6 +573,11 @@
 
   <!-- ═══════ TAB: RULES ═══════ -->
   <div class="tab-pane" data-tab="rules">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">🔒</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — security rules will appear here for editing.</p>
+  </div>
   <!-- Security Rules -->
   <div class="section-collapsible" id="rulesSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('rules')" style="position:relative;">
@@ -673,6 +691,11 @@
 
   <!-- ═══════ TAB: TOOLS ═══════ -->
   <div class="tab-pane" data-tab="tools">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">🔧</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — the What-If Simulator and CIDR Calculator will appear here.</p>
+  </div>
   <!-- Network Tools (CIDR Calc + What-If + Common Ports) -->
   <!-- What-If Traffic Simulator -->
   <div class="section-collapsible" id="networkToolsSection" style="display:none;">
@@ -786,6 +809,11 @@
 
   <!-- ═══════ TAB: AUDIT ═══════ -->
   <div class="tab-pane" data-tab="audit">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">📋</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — every change you make will be tracked here.</p>
+  </div>
   <!-- Audit Log -->
   <div class="section-collapsible" id="auditSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('audit')">
@@ -2307,6 +2335,7 @@ function loadNsg(nsg, warnings) {
 }
 
 function showUI() {
+  document.body.classList.add('has-data');
   document.getElementById('dropZone').style.display = '';
   document.getElementById('scratchSection').style.display = 'none';
   ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','cidrSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
@@ -2487,6 +2516,7 @@ function parseTfvars(content) {
 
 function resetEditor() {
   if (!confirm('Are you sure? This will clear all rules and reset the editor.')) return;
+  document.body.classList.remove('has-data');
   nsgState = { name: '', location: 'location', locationIsParam: true, apiVersion: '2024-05-01', rules: [], warnings: [], flushConnection: false, importContext: null, importedFileName: null, companionFileName: null };
   originalRules = []; undoStack = []; redoStack = []; selectedIndices.clear(); updateUndoRedoButtons();
   rulesRevision++; analysisCache = null; auditLog = [];
