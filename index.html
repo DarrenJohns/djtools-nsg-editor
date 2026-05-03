@@ -765,6 +765,7 @@
     <div class="section-header" onclick="toggleSection('ports')">
       <span class="section-toggle" id="portsToggle">▶</span>
       <h3>📡 Common Port Reference</h3>
+      <span class="section-badge" id="portsBadge"></span>
     </div>
     <div class="section-body" id="portsBody">
       <input type="text" id="portSearch" placeholder="Search ports..." style="width:100%;padding:6px 10px;border:1px solid var(--border-default);border-radius:var(--radius-sm);margin-bottom:8px;font-size:13px;background:var(--bg-layer1);color:var(--text-primary);" oninput="filterPorts()">
@@ -1411,6 +1412,8 @@ function renderPorts(filter = '') {
       <span class="risk-badge ${riskClass}">${p.risk}</span>
     </div>`;
   }).join('');
+  const badge = document.getElementById('portsBadge');
+  if (badge) badge.textContent = `${COMMON_PORTS.length} ports`;
 }
 function filterPorts() { renderPorts(document.getElementById('portSearch').value); }
 let lastFilledPort = null;
