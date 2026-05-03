@@ -1,0 +1,26 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+# Node (if used later)
+node_modules/
+dist/
+# Session/temp files
+*.tmp
+*.log
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.publishsettings
+secrets.*
+

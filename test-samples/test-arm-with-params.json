@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "australiaeast"
+    },
+    "allowedSubnet": {
+      "type": "string",
+      "defaultValue": "10.10.0.0/24"
+    },
+    "adminSourceIP": {
+      "type": "string",
+      "defaultValue": "203.0.113.50/32"
+    }
+  },
+  "variables": {
+    "nsgName": "nsg-arm-test",
+    "dbSubnet": "10.10.5.0/24"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2024-05-01",
+      "name": "[variables('nsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Allow-SQL-From-AppSubnet",
+            "properties": {
+              "priority": 100,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "1433",
+              "sourceAddressPrefix": "[parameters('allowedSubnet')]",
+              "destinationAddressPrefix": "[variables('dbSubnet')]"
+            }
+          },
+          {
+            "name": "Allow-RDP-From-Admin",
+            "properties": {
+              "priority": 200,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "[parameters('adminSourceIP')]",
+              "destinationAddressPrefix": "*"
+            }
+          },
+          {
+            "name": "Deny-All",
+            "properties": {
+              "priority": 4000,
+              "direction": "Inbound",
+              "access": "Deny",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
