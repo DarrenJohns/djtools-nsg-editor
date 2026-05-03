@@ -2533,22 +2533,17 @@ function parseTfvars(content) {
 }
 
 function resetEditor() {
-  if (!confirm('Are you sure? This will clear all rules and reset the editor.')) return;
-  document.body.classList.remove('has-data');
-  nsgState = { name: '', location: 'location', locationIsParam: true, apiVersion: '2024-05-01', rules: [], warnings: [], flushConnection: false, importContext: null, importedFileName: null, companionFileName: null };
+  if (!confirm('Are you sure? This will clear all rules. The NSG name and location are kept so you can continue adding rules.')) return;
+  nsgState.rules = [];
+  nsgState.warnings = [];
   originalRules = []; undoStack = []; redoStack = []; selectedIndices.clear(); updateUndoRedoButtons();
-  rulesRevision++; analysisCache = null; auditLog = [];
-  clearAutoSave();
-  document.getElementById('dropZone').style.display = '';
-  document.getElementById('scratchSection').style.display = '';
-  ['toolbar','rulesSection','emptyState','warningsPanel','exprBanner','statsSection','analysisSection','portsSection','serviceTagSection','securitySection','networkToolsSection','cidrSection','auditSection'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
+  rulesRevision++; analysisCache = null;
+  logAudit('Clear', 'All rules cleared');
   document.getElementById('bulkBar').classList.remove('active');
   const rulesTabAlert = document.getElementById('rulesTabAlert');
   if (rulesTabAlert) { rulesTabAlert.textContent = ''; rulesTabAlert.classList.remove('visible'); }
-  fileInput.value = '';
+  updateDisplay();
+  showToast('All rules cleared');
 }
 
 // ══════════════════════════════════════════════
