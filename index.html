@@ -2299,6 +2299,7 @@ function loadNsg(nsg, warnings) {
 }
 
 function showUI() {
+  document.getElementById('dropZone').style.display = '';
   document.getElementById('scratchSection').style.display = 'none';
   ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
   updateDisplay();
