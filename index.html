@@ -973,13 +973,13 @@
       <div id="flushConnectionRow" style="margin-bottom:12px;display:flex;align-items:center;gap:8px;">
         <input type="checkbox" id="flushConnectionToggle" onchange="nsgState.flushConnection=this.checked">
         <label for="flushConnectionToggle" style="font-size:12px;color:var(--text-secondary);">
-          Drop active connections when rules change <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, existing network connections are immediately dropped and re-checked against the new rules. Leave unchecked (default) to let existing connections continue undisrupted. This setting only takes effect when the exported file is deployed to Azure.">ⓘ Applies at deployment — most users should leave unchecked</span>
+          Drop active connections when rules change <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, existing network connections are immediately dropped and re-checked against the new rules. Leave unchecked (default) to let existing connections continue undisrupted. This setting only takes effect when the exported file is deployed to Azure.">⚠️ Applies at deployment — most users should leave unchecked</span>
         </label>
       </div>
       <div id="inlineRow" style="margin-bottom:12px;display:flex;align-items:center;gap:8px;">
         <input type="checkbox" id="inlineAllToggle" onchange="toggleInlineExport(this.checked)">
         <label for="inlineAllToggle" style="font-size:12px;color:var(--text-secondary);">
-          Inline all values <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, all parameter and variable references are replaced with their resolved literal values. Useful when you want a standalone file with no external dependencies.">ⓘ Replaces parameter/variable references with literal values</span>
+          Inline all values <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, all parameter and variable references are replaced with their resolved literal values. Useful when you want a standalone file with no external dependencies.">⚠️ Replaces parameter/variable references with literal values</span>
         </label>
       </div>
       <div id="inlineNote" style="margin-bottom:12px;display:none;font-size:11px;color:var(--text-tertiary);font-style:italic;">ⓘ This format always uses inline (literal) values</div>
