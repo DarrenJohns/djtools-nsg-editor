@@ -2549,7 +2549,6 @@ function resetEditor() {
   const rulesTabAlert = document.getElementById('rulesTabAlert');
   if (rulesTabAlert) { rulesTabAlert.textContent = ''; rulesTabAlert.classList.remove('visible'); }
   fileInput.value = '';
-  if (typeof activateTab === 'function') activateTab('import');
 }
 
 // ══════════════════════════════════════════════
