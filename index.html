@@ -1233,7 +1233,7 @@ function timeSince(date) {
   if (s < 86400) return Math.floor(s/3600) + 'h ago';
   return Math.floor(s/86400) + 'd ago';
 }
-document.addEventListener('DOMContentLoaded', () => { autoRestore(); });
+document.addEventListener('DOMContentLoaded', () => { autoRestore(); renderServiceTags(); renderPorts(); });
 
 // ── Keyboard Shortcuts ──
 document.addEventListener('keydown', e => {
