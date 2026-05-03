@@ -1,6 +1,6 @@
 # 📋 NSG Rule Editor — Specification
 
-> **Version:** 1.0.0-beta
+> **Version:** 1.0.1
 > **Format:** Single HTML file, zero dependencies
 > **Target audience:** Azure network administrators
 

@@ -9,10 +9,11 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'><stop offset='0%25' stop-color='%23e04040'/><stop offset='100%25' stop-color='%23b02020'/></linearGradient></defs><path d='M50 8 L88 28 V58 C88 76 72 90 50 96 C28 90 12 76 12 58 V28 Z' fill='url(%23g)'/><path d='M38 52 L46 60 L62 42' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
 <style>
   /* ── Fluent UI / Microsoft 365 Design System ── */
-  :root {
+  :root, [data-theme="light"] {
     --brand-primary: #0f6cbd;
     --brand-hover: #115ea3;
     --brand-pressed: #0f548c;
+    --brand-gradient: linear-gradient(135deg, #0f6cbd 0%, #115ea3 100%);
     --brand-subtle: #ebf3fc;
     --brand-bg: #0f6cbd;
     --bg-base: #fafafa;
@@ -35,53 +36,126 @@
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
-    --shadow-sm: 0 4px 20px rgba(0,120,212,0.10);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
     --shadow-md: 0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 8px 16px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.12);
-    --font-sans: 'Segoe UI', system-ui, sans-serif;
+    --font-sans: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     --transition: 120ms cubic-bezier(0.33, 0, 0.67, 1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); background-color: var(--bg-base); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  *:focus { outline: none; }
+  *:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: 4px; }
+  html { overflow-y: scroll; }
+  body { font-family: var(--font-sans); background-color: var(--bg-base); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; padding-top: 120px;
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg opacity='0.18'%3E%3Ccircle cx='80' cy='80' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='200' cy='40' r='4' fill='%230f6cbd'/%3E%3Ccircle cx='320' cy='100' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='480' cy='60' r='4.5' fill='%230f6cbd'/%3E%3Ccircle cx='560' cy='140' r='5' fill='%238764b8'/%3E%3Ccircle cx='140' cy='200' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='300' cy='240' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='440' cy='200' r='4' fill='%23c4314b'/%3E%3Ccircle cx='60' cy='340' r='4.5' fill='%238764b8'/%3E%3Ccircle cx='220' cy='380' r='5' fill='%230f6cbd'/%3E%3Ccircle cx='380' cy='340' r='6' fill='%230e7a0d'/%3E%3Ccircle cx='520' cy='320' r='4' fill='%230f6cbd'/%3E%3Ccircle cx='120' cy='480' r='5' fill='%23c4314b'/%3E%3Ccircle cx='280' cy='520' r='4.5' fill='%230f6cbd'/%3E%3Ccircle cx='460' cy='460' r='5' fill='%238764b8'/%3E%3Ccircle cx='560' cy='520' r='6' fill='%230e7a0d'/%3E%3Cline x1='80' y1='80' x2='200' y2='40' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='200' y1='40' x2='320' y2='100' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='320' y1='100' x2='480' y2='60' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='480' y1='60' x2='560' y2='140' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='80' y1='80' x2='140' y2='200' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='140' y1='200' x2='300' y2='240' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='440' y2='200' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='440' y1='200' x2='560' y2='140' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='60' y1='340' x2='220' y2='380' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='220' y1='380' x2='380' y2='340' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='380' y1='340' x2='520' y2='320' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='140' y1='200' x2='60' y2='340' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='220' y2='380' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='300' y1='240' x2='380' y2='340' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='440' y1='200' x2='520' y2='320' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='60' y1='340' x2='120' y2='480' stroke='%23c4314b' stroke-width='1.2'/%3E%3Cline x1='220' y1='380' x2='280' y2='520' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='380' y1='340' x2='460' y2='460' stroke='%238764b8' stroke-width='1.2'/%3E%3Cline x1='520' y1='320' x2='560' y2='520' stroke='%230e7a0d' stroke-width='1.2'/%3E%3Cline x1='120' y1='480' x2='280' y2='520' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='280' y1='520' x2='460' y2='460' stroke='%230f6cbd' stroke-width='1.2'/%3E%3Cline x1='460' y1='460' x2='560' y2='520' stroke='%230e7a0d' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E"),
       radial-gradient(ellipse at 0% 0%, rgba(15,108,189,0.06) 0%, transparent 60%),
       radial-gradient(ellipse at 100% 100%, rgba(14,122,13,0.05) 0%, transparent 60%);
     background-attachment: fixed; min-height: 100vh; }
-  .container { max-width: 1440px; margin: 0 auto; padding: 20px 24px; }
-  /* ── Header ── */
-  header { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: var(--text-on-brand); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; box-shadow: 0 2px 12px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 800; }
+  .container { max-width: 1440px; margin: 0 auto; padding: 48px 24px 16px; }
+  /* ── Header (fixed) ── */
+  header { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: var(--text-on-brand); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
   header svg { width: 28px; height: 28px; fill: white; }
   header h1 { font-size: 1.1rem; font-weight: 700; }
   .nav-brand { display: flex; align-items: center; gap: 8px; }
-  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a { color: rgba(255,255,255,0.85); padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 500; transition: background 0.2s; text-decoration: none; white-space: nowrap; }
-  .nav-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
   .nav-actions { display: flex; gap: 8px; align-items: center; }
-  .nav-btn { background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; }
+  .nav-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: background 0.2s; backdrop-filter: blur(4px); }
+  .nav-btn-icon { font-size: 16px; padding: 6px 12px; line-height: 1; }
   .nav-btn:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── Tab Strip (fixed under header) ── */
+  .tab-strip {
+    position: fixed;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 998;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    max-width: 1400px;
+    width: calc(100% - 48px);
+    padding: 0 24px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .tab-strip { background: rgba(30,33,40, 0.55); }
+  .tab-strip .tab {
+    flex: 0 0 auto;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    padding: 12px 14px;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+    font-family: inherit;
+    user-select: none;
+  }
+  .tab-strip .tab:hover { color: var(--text-primary); }
+  .tab-strip .tab.active { color: var(--brand-primary); border-bottom-color: var(--brand-primary); }
+  .tab-strip .tab .tab-badge {
+    font-size: 9px;
+    background: #f0f7ff;
+    color: var(--brand-primary);
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 5px;
+    font-weight: 700;
+    border: 1px solid #b3d4f0;
+  }
+  [data-theme="dark"] .tab-strip .tab .tab-badge { background: #1a2e4a; color: #6db3f2; border-color: #2a5a8a; }
+  .tab-strip .tab .tab-alert {
+    display: none;
+    font-size: 10px;
+    background: var(--status-danger);
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 9px;
+    margin-left: 6px;
+    font-weight: 700;
+    line-height: 1.4;
+    vertical-align: middle;
+  }
+  .tab-strip .tab .tab-alert.visible { display: inline-block; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
 
   /* ── Buttons ── */
   .btn { font-family: var(--font-sans); font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); padding: 7px 16px; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; display: inline-flex; align-items: center; gap: 4px; }
-  .btn-primary { background: linear-gradient(180deg, #1a7fd4 0%, var(--brand-primary) 100%); color: var(--text-on-brand); box-shadow: 0 1px 3px rgba(15,108,189,0.3); }
-  .btn-primary:hover { background: linear-gradient(180deg, #1a8ae6 0%, var(--brand-hover) 100%); }
+  .btn-primary { background: var(--brand-primary); color: var(--text-on-brand); }
+  .btn-primary:hover { background: var(--brand-hover); }
   .btn-outline { background: var(--bg-layer1); border: 1px solid var(--border-default); color: var(--text-primary); }
   .btn-outline:hover { background: var(--bg-hover); border-color: var(--brand-primary); }
-  .btn-success { background: linear-gradient(180deg, #13961a 0%, var(--status-success) 100%); color: white; box-shadow: 0 1px 3px rgba(14,122,13,0.3); }
-  .btn-success:hover { background: linear-gradient(180deg, #15a81c 0%, #0c6b0b 100%); }
-  .btn-danger { background: linear-gradient(180deg, #d9364f 0%, var(--status-danger) 100%); color: white; }
+  .btn-success { background: var(--status-success); color: white; }
+  .btn-success:hover { filter: brightness(1.08); }
+  .btn-danger { background: var(--status-danger); color: white; }
+  .btn-danger:hover { filter: brightness(1.08); }
+  .btn-secondary { background: var(--bg-layer1); color: var(--text-primary); border: 1px solid var(--border-default); }
+  .btn-secondary:hover { background: var(--bg-hover); border-color: var(--brand-primary); }
+  [data-theme="dark"] .btn-secondary { background: var(--bg-layer2); border-color: var(--border-default); }
+  [data-theme="dark"] .btn-secondary:hover { background: var(--bg-hover); border-color: var(--brand-primary); }
   .btn-sm { font-size: 13px; padding: 4px 10px; }
   .btn-action-edit, .btn-action-dup, .btn-action-del { background: transparent; border: 1px solid var(--border-default); color: var(--text-secondary); font-size: 14px; border-radius: var(--radius-sm); padding: 2px 5px; cursor: pointer; transition: all 0.15s ease; line-height: 1; display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; flex-shrink: 0; }
   .btn-action-edit svg, .btn-action-dup svg, .btn-action-del svg { flex-shrink: 0; }
-  .btn-action-edit:hover { background: var(--brand-subtle); border-color: var(--brand-default); color: var(--brand-default); }
+  .btn-action-edit:hover { background: var(--brand-subtle); border-color: var(--brand-primary); color: var(--brand-primary); }
   .btn-action-dup:hover { background: #e8f8e8; border-color: #0e7a0d; color: #0e7a0d; }
   .btn-action-del:hover { background: #fce8ec; border-color: #c4314b; color: #c4314b; }
   .rule-actions { display: flex; gap: 3px; white-space: nowrap; overflow: visible; align-items: center; flex-wrap: nowrap; }
 
   /* ── Welcome Modal ── */
-  .welcome-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .welcome-overlay { position: fixed; inset: 0; z-index: 10001; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
   .welcome-overlay.active { opacity: 1; pointer-events: auto; }
-  .welcome-card { background: var(--bg-layer1); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 540px; width: 90%; overflow: hidden; }
+  .welcome-card { background: var(--bg-layer1); border-radius: var(--radius-md); box-shadow: var(--shadow-md); max-width: 540px; width: 90%; overflow: hidden; }
   .welcome-banner { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: white; padding: 28px 32px 20px; text-align: center; }
   .welcome-banner h2 { font-size: 22px; margin-bottom: 6px; }
   .welcome-banner p { font-size: 14px; opacity: 0.85; }
@@ -89,17 +163,17 @@
   .welcome-body ul { list-style: none; margin-bottom: 20px; }
   .welcome-body li { padding: 8px 0; display: flex; gap: 10px; align-items: flex-start; white-space: nowrap; }
   .welcome-body li span { font-size: 18px; flex-shrink: 0; }
-  .welcome-body .btn { width: 100%; justify-content: center; font-size: 14px; padding: 10px; }
+  .welcome-body .btn { width: 100%; justify-content: center; font-size: 14px; font-weight: 400; padding: 10px; display: flex; }
 
   /* ── Drop Zone ── */
-  .drop-zone { border: 2px dashed var(--brand-primary); border-radius: 16px; padding: 36px; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--bg-layer1); position: relative; }
-  .drop-zone:hover, .drop-zone.drag-over { background: rgba(0,120,212,0.06); border-color: #50E6FF; }
+  .drop-zone { border: 2px dashed #a0c4e8; border-radius: var(--radius-lg); padding: 36px; text-align: center; cursor: pointer; transition: all 0.2s; background: linear-gradient(180deg, #f0f7ff 0%, #fafcff 100%); position: relative; }
+  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--brand-primary); background: linear-gradient(180deg, #e0efff 0%, #f0f7ff 100%); box-shadow: 0 0 20px rgba(15,108,189,0.1); }
   .drop-icon { font-size: 3rem; margin-bottom: 12px; }
   .drop-zone h3 { font-size: 1.1rem; font-weight: 700; color: var(--brand-primary); margin-bottom: 6px; }
   .drop-zone p { color: var(--text-secondary); font-size: 0.9rem; }
   .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 
-  /* ── Sections ── */
+  /* ── Sections (collapsibility neutralised inside tab panes) ── */
   .summary-overview { margin-top: 16px; }
   .section-collapsible { margin-top: 24px; }
   .section-header { display: flex; align-items: center; gap: 10px; padding: 0 0 12px 0; cursor: pointer; user-select: none; }
@@ -108,6 +182,14 @@
   .section-toggle.open { transform: rotate(90deg); }
   .section-body { max-height: 0; overflow: hidden; background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: 14px; box-shadow: var(--shadow-sm); transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 16px; }
   .section-body.open { max-height: 5000px; padding: 16px; }
+  /* Inside a tab pane, sections are always expanded — tabs replace collapsibility */
+  .tab-pane .section-collapsible { margin-top: 0; }
+  .tab-pane .section-collapsible + .section-collapsible { margin-top: 24px; }
+  .tab-pane .summary-overview + .section-collapsible { margin-top: 24px; }
+  .tab-pane .section-header { cursor: default; }
+  .tab-pane .section-toggle { display: none; }
+  .tab-pane .section-body { max-height: none !important; padding: 16px !important; overflow: visible; }
+  .tab-pane #startHint { display: none !important; }
   .section-badge { font-size: 0.78rem; font-weight: 600; padding: 2px 10px; border-radius: 10px; background: var(--brand-subtle); color: var(--brand-primary); border: 1px solid #b4d6fa; }
 
   /* ── Warnings ── */
@@ -167,12 +249,21 @@
   tr.selected td { background: var(--brand-subtle); }
   .empty-state { text-align: center; padding: 32px; color: var(--text-secondary); font-size: 14px; }
 
+  /* No-data placeholder shown in non-Import tabs before import */
+  .tab-empty-notice { max-width: 540px; margin: 56px auto; padding: 36px 32px; background: var(--bg-layer1); border: 1px dashed var(--border-default); border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm); }
+  .tab-empty-notice .tab-empty-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .tab-empty-notice h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .tab-empty-notice p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+  .tab-empty-notice a { color: var(--brand-primary); font-weight: 600; cursor: pointer; }
+  body.has-data .tab-empty-notice { display: none; }
+  body:not(.has-data) #limitsGauge { display: none; }
+
   /* ── Analysis Panels ── */
   .analysis-panel { padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 8px; }
   .analysis-panel h4 { font-size: 14px; margin-bottom: 6px; }
   .analysis-panel ul { font-size: 13px; padding-left: 18px; }
   .analysis-panel li { margin-bottom: 4px; }
-  .analysis-panel.conflict { background: var(--status-danger-bg); border-left: 3px solid var(--status-danger); }
+  .analysis-panel.conflict { background: #fde2e4; border-left: 3px solid var(--status-danger); }
   .analysis-panel.gap-warn { background: var(--status-warning-bg); border-left: 3px solid var(--status-warning); }
   .analysis-panel.deny-warn { background: var(--status-info-bg); border-left: 3px solid var(--brand-primary); }
   .analysis-panel.shadow-warn { background: #f5f0ff; border-left: 3px solid #8764b8; }
@@ -267,7 +358,7 @@
   .limits-fill.red { background: linear-gradient(90deg, #c4314b, #e8374f); }
 
   /* ── Modals ── */
-  .modal-overlay { position: fixed; inset: 0; z-index: 900; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .modal-overlay { position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
   .modal-overlay.active { opacity: 1; pointer-events: auto; }
   .modal { background: var(--bg-layer1); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 600px; max-width: 95vw; max-height: 90vh; display: flex; flex-direction: column; }
   .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border-default); }
@@ -288,7 +379,7 @@
   .nsg-list li:hover { background: var(--brand-subtle); border-color: var(--brand-primary); }
 
   /* ── Toast ── */
-  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 10px 20px; font-size: 14px; box-shadow: var(--shadow-md); z-index: 1100; transition: transform 0.3s, opacity 0.3s; opacity: 0; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 10px 20px; font-size: 14px; box-shadow: var(--shadow-md); z-index: 1200; transition: transform 0.3s, opacity 0.3s; opacity: 0; }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
   .toast.success { border-color: #a5d6a7; }
   .toast.error { border-color: #ef9a9a; color: var(--status-danger); }
@@ -321,16 +412,45 @@
   .tips-dot.done { background: var(--status-success); }
 
   /* ── Keyboard Shortcuts Modal ── */
-  .shortcuts-grid { display: grid; gap: 8px; }
-  .shortcut-item { display: flex; align-items: center; gap: 12px; padding: 6px 0; }
-  .shortcut-key { font-family: 'Cascadia Code', monospace; font-size: 12px; background: var(--bg-layer2); border: 1px solid var(--border-default); border-radius: 4px; padding: 2px 8px; min-width: 60px; text-align: center; font-weight: 600; }
+  .shortcuts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 8px; }
+  .shortcut-item { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: var(--radius-sm); background: var(--bg-layer2); }
+  .shortcut-key { min-width: 36px; text-align: center; padding: 4px 8px; background: var(--bg-layer1); border: 1px solid var(--border-default); border-radius: var(--radius-sm); font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 13px; font-weight: 600; }
   .shortcut-desc { font-size: 13px; color: var(--text-secondary); }
+  .modal-banner { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: #fff; padding: 24px 28px 18px; text-align: center; }
+  .modal-banner h2 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+  .modal-close-row { display: flex; margin-top: 8px; }
+  .modal-close-row .btn { width: 100%; justify-content: center; font-size: 14px; font-weight: 400; padding: 10px; }
 
   /* ══ DARK THEME ══ */
-  [data-theme="dark"] { --brand-subtle: #1a2e4a; --bg-base: #141414; --bg-layer1: #1f1f1f; --bg-layer2: #292929; --bg-hover: #333333; --border-default: #404040; --border-subtle: #333333; --text-primary: #e5e5e5; --text-secondary: #a0a0a0; --text-tertiary: #6a6a6a; --status-danger-bg: #2d1a1f; --status-success-bg: #1a2d1a; --status-warning-bg: #2d261a; --status-info-bg: #1a2540; }
-  [data-theme="dark"] header { background: linear-gradient(135deg, #0e4a8a 0%, #0a2e5c 100%); }
-  [data-theme="dark"] .drop-zone { background: var(--bg-layer1); border-color: #2a4a6a; }
-  [data-theme="dark"] .drop-zone:hover, [data-theme="dark"] .drop-zone.drag-over { background: rgba(0,120,212,0.1); border-color: #3a6a9a; }
+  [data-theme="dark"] {
+    --brand-primary: #479ef5;
+    --brand-hover: #62abf5;
+    --brand-pressed: #2886e0;
+    --brand-gradient: linear-gradient(135deg, #1b3a5c 0%, #0f2d4a 100%);
+    --brand-subtle: #1a2e4a;
+    --bg-base: #141414;
+    --bg-layer1: #1f1f1f;
+    --bg-layer2: #292929;
+    --bg-hover: #333333;
+    --border-default: #404040;
+    --border-subtle: #333333;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #6a6a6a;
+    --status-danger: #e87575;
+    --status-danger-bg: #3d1f25;
+    --status-success: #54b054;
+    --status-success-bg: #1f3d1f;
+    --status-warning: #f5a623;
+    --status-warning-bg: #3d2f1f;
+    --status-info-bg: #1f2d3d;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.4), 0 16px 48px rgba(0,0,0,0.5);
+  }
+  [data-theme="dark"] header { background: linear-gradient(135deg, #1a1d24 0%, #12151a 100%); }
+  [data-theme="dark"] .drop-zone { background: linear-gradient(180deg, rgba(71,158,245,0.06) 0%, rgba(71,158,245,0.02) 100%); border-color: rgba(71,158,245,0.4); }
+  [data-theme="dark"] .drop-zone:hover, [data-theme="dark"] .drop-zone.drag-over { background: linear-gradient(180deg, rgba(71,158,245,0.12) 0%, rgba(71,158,245,0.05) 100%); border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(71,158,245,0.18); }
 
   [data-theme="dark"] .section-header .section-toggle { color: var(--brand-primary); }
   [data-theme="dark"] .warnings-panel { border-color: #664a2a; }
@@ -351,6 +471,7 @@
   [data-theme="dark"] .rule-actions .btn-action-del:hover { background: #3b1e1a; border-color: #5a2525; color: #f87171; }
 
   [data-theme="dark"] .analysis-panel.shadow-warn { background: #1a1530; border-color: #6a4a9a; }
+  [data-theme="dark"] .analysis-panel.conflict { background: #4a1e22; }
   [data-theme="dark"] .analysis-panel.desc-warn { background: #2d261a; border-color: #a08040; }
   [data-theme="dark"] .stat-card.inbound .stat-value { color: #6ea8fe; }
   [data-theme="dark"] .stat-card.outbound .stat-value { color: #feb272; }
@@ -384,18 +505,21 @@
     <svg viewBox="0 0 100 100" style="width:28px;height:28px;"><defs><linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e04040"/><stop offset="100%" stop-color="#b02020"/></linearGradient></defs><path d="M50 8 L88 28 V58 C88 76 72 90 50 96 C28 90 12 76 12 58 V28 Z" fill="url(#hg)"/><path d="M38 52 L46 60 L62 42" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
     <h1>Azure NSG Rule Editor</h1>
   </div>
-  <div class="nav-links" id="navLinks">
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">📊 Summary</a>
-    <a href="#rulesSection">🔒 Rules</a>
-    <a href="#analysisSection">🔍 Analysis</a>
-    <a href="#portsSection">🌐 Ports</a>
-    <a href="#auditSection">📋 Audit Log</a>
-  </div>
   <div class="nav-actions">
-    <button class="nav-btn" onclick="openShortcutsModal()">⌨️ Shortcuts</button>
-    <button class="nav-btn" id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <button class="nav-btn nav-btn-icon" onclick="openShortcutsModal()" title="Keyboard shortcuts (?)">⌨</button>
+    <button class="nav-btn nav-btn-icon" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
   </div>
 </header>
+
+<!-- Tab Strip -->
+<nav class="tab-strip" id="tabStrip" role="tablist" aria-label="App sections">
+  <button class="tab active" role="tab" data-tab="import"    onclick="activateTab('import')">📥 Import</button>
+  <button class="tab"        role="tab" data-tab="summary"   onclick="activateTab('summary')">📊 Summary</button>
+  <button class="tab"        role="tab" data-tab="rules"     onclick="activateTab('rules')">🔒 Rules<span class="tab-alert" id="rulesTabAlert" title="Rule issues detected"></span></button>
+  <button class="tab"        role="tab" data-tab="tools"     onclick="activateTab('tools')">🔧 Tools</button>
+  <button class="tab"        role="tab" data-tab="reference" onclick="activateTab('reference')">📚 Reference</button>
+  <button class="tab"        role="tab" data-tab="audit"     onclick="activateTab('audit')">📋 Audit Log</button>
+</nav>
 
 <!-- Welcome Modal -->
 <div class="welcome-overlay active" id="welcomeModal">
@@ -405,14 +529,13 @@
       <p>Easily manage Azure Network Security Group rules</p>
     </div>
     <div class="welcome-body">
+      <!-- Welcome should display 5 items -->
       <ul>
         <li><span>📂</span> <strong>Import</strong> — BICEP, ARM, Terraform, CSV, parameter files</li>
-        <li><span>🔄</span> <strong>Convert</strong> — Any format in, any format out</li>
-        <li><span>🧠</span> <strong>Expressions</strong> — Auto-detect and resolve parameters</li>
+        <li><span>⬇️</span> <strong>Export / Convert</strong> — 6 formats with companion param files</li>
         <li><span>✏️</span> <strong>Edit</strong> — Add, modify, duplicate with 20+ templates</li>
-        <li><span>🛡️</span> <strong>Analyse</strong> — Security score, conflicts, What-If sim</li>
-        <li><span>📤</span> <strong>Export</strong> — 6 formats with companion param files</li>
-        <li><span>💾</span> <strong>Auto-Save</strong> — Resume your work anytime</li>
+        <li><span>🛡️</span> <strong>Analyse</strong> — Security score &amp; rule conflicts</li>
+        <li><span>🧰</span> <strong>Tools</strong> — CIDR calculator &amp; What-If simulator</li>
       </ul>
       <button class="btn btn-primary" onclick="closeWelcome()">Get Started</button>
     </div>
@@ -420,6 +543,9 @@
 </div>
 
 <div class="container">
+
+  <!-- ═══════ TAB: IMPORT ═══════ -->
+  <div class="tab-pane active" data-tab="import">
   <!-- Drop Zone -->
   <div class="drop-zone" id="dropZone">
     <div class="drop-icon">📂</div>
@@ -445,6 +571,19 @@
     </div>
   </div>
 
+  <!-- Start from scratch -->
+  <div style="text-align:center;margin-top:12px;" id="scratchSection">
+    <button class="btn btn-outline" onclick="startFromScratch()">Or start from scratch — create a new NSG</button>
+  </div>
+  </div><!-- /tab-pane import -->
+
+  <!-- ═══════ TAB: SUMMARY ═══════ -->
+  <div class="tab-pane" data-tab="summary">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">📊</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to drop a Bicep / ARM / Terraform / JSON file, or start fresh — your rule summary will appear here.</p>
+  </div>
   <!-- Rule Summary (static overview) -->
   <div class="summary-overview" id="statsSection" style="display:none;">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
@@ -452,9 +591,41 @@
       <h3 style="font-size:1.35rem;font-weight:700;color:var(--text-primary);margin:0;">Rule Summary</h3>
     </div>
     <div class="stats-panel" id="statsPanel"></div>
-    <div class="limits-gauge" id="limitsGauge"></div>
   </div>
 
+  <div class="section-collapsible" id="securitySection" style="display:none;">
+    <div class="section-header" onclick="toggleSection('security')">
+      <span class="section-toggle" id="securityToggle">▶</span>
+      <h3>🛡️ Security & Compliance</h3>
+      <span class="section-badge" id="securityBadge">—</span>
+    </div>
+    <div class="section-body" id="securityBody">
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.6;">
+        Your NSG ruleset is automatically assessed against industry security benchmarks. The score reflects common risks such as
+        exposed management ports (RDP/SSH), overly broad address ranges, missing deny rules, and absent rule descriptions.
+        Address any flagged items below to strengthen your security posture.
+      </p>
+      <div id="securityContent"></div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
+        <ul style="list-style:none;font-size:12px;line-height:1.8;">
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Overview</a> — How Azure Network Security Groups filter traffic between Azure resources</li>
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/security/benchmark/azure/security-controls-v3-network-security" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Azure Security Benchmark v3 — Network Security</a> — Microsoft's best practice controls for network segmentation and protection</li>
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">How NSGs Work</a> — Understand rule evaluation order, priority, and implicit deny behaviour</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div><!-- /tab-pane summary -->
+
+  <!-- ═══════ TAB: RULES ═══════ -->
+  <div class="tab-pane" data-tab="rules">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">🔒</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — security rules will appear here for editing.</p>
+  </div>
+  <div class="limits-gauge" id="limitsGauge" style="margin-bottom:16px;"></div>
   <!-- Security Rules -->
   <div class="section-collapsible" id="rulesSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('rules')" style="position:relative;">
@@ -489,7 +660,7 @@
         <button class="btn btn-outline" onclick="openTemplatesModal()">📋 Templates</button>
         <button class="btn btn-outline" onclick="undoAction()" id="undoBtn" disabled title="Undo (Ctrl+Z)">↩ Undo</button>
         <button class="btn btn-outline" onclick="redoAction()" id="redoBtn" disabled title="Redo (Ctrl+Y)">↪ Redo</button>
-        <button class="btn btn-outline" onclick="document.getElementById('networkToolsSection').style.display='block'; var b=document.getElementById('networkToolsBody'); if(!b.classList.contains('open')) toggleSection('networkTools'); setTimeout(function(){var sb=document.getElementById('whatifSimulateBtn'); sb.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){var tip=document.getElementById('whatifTip'); tip.classList.add('show'); setTimeout(function(){tip.classList.remove('show');},3500);},600);},200);" title="Test which rule matches specific traffic">🔍 What-If</button>
+        <button class="btn btn-outline" onclick="activateTab('tools'); setTimeout(function(){var sb=document.getElementById('whatifSimulateBtn'); if(sb){sb.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){var tip=document.getElementById('whatifTip'); if(tip){tip.classList.add('show'); setTimeout(function(){tip.classList.remove('show');},3500);}},600);}},200);" title="Test which rule matches specific traffic">🔍 What-If</button>
         <button class="btn btn-success" onclick="openExportModal()">⬇ Export</button>
         <button class="btn btn-outline" onclick="resetEditor()">✕ Clear</button>
       </div>
@@ -539,11 +710,65 @@
     <p>No rules defined. Click <strong>+ Add Rule</strong> or <strong>📋 Templates</strong> to get started.</p>
   </div>
 
-  <!-- Analysis & Reference -->
+
+  </div><!-- /tab-pane rules -->
+
+  <!-- ═══════ TAB: TOOLS ═══════ -->
+  <div class="tab-pane" data-tab="tools">
+  <!-- What-If Traffic Simulator -->
+  <div class="section-collapsible" id="networkToolsSection">
+    <div class="section-header" onclick="toggleSection('networkTools')">
+      <span class="section-toggle" id="networkToolsToggle">▶</span>
+      <h3>🔍 What-If Traffic Simulator</h3>
+    </div>
+    <div class="section-body" id="networkToolsBody">
+      <p style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Test whether specific traffic would be allowed or denied by your NSG rules.</p>
+      <div class="whatif-form">
+        <div class="form-group"><label>Direction</label><select id="whatifDirection"><option value="Inbound">Inbound</option><option value="Outbound">Outbound</option></select></div>
+        <div class="form-group"><label>Source IP / Tag</label><input type="text" id="whatifSrcAddr" placeholder="e.g. 10.0.1.5, Internet"></div>
+        <div class="form-group"><label>Source Port</label><input type="text" id="whatifSrcPort" placeholder="e.g. 49152" value="*"></div>
+        <div class="form-group"><label>Dest IP / Tag</label><input type="text" id="whatifDstAddr" placeholder="e.g. 10.1.0.4, VirtualNetwork"></div>
+        <div class="form-group"><label>Dest Port</label><input type="text" id="whatifDstPort" placeholder="e.g. 443"></div>
+        <div class="form-group"><label>Protocol</label><select id="whatifProtocol"><option value="Tcp">TCP</option><option value="Udp">UDP</option><option value="Icmp">ICMP</option><option value="*">Any</option></select></div>
+      </div>
+      <button class="btn btn-primary" id="whatifSimulateBtn" onclick="runWhatIf()">▶ Simulate</button>
+      <div class="whatif-tip" id="whatifTip">👆 Fill in the fields above, then click <strong>Simulate</strong> to test your rules</div>
+      <div id="whatifResults"></div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
+        <ul style="list-style:none;font-size:12px;line-height:1.8;">
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#security-rules" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Security Rules</a> — Properties, evaluation order, and how Azure processes inbound and outbound rules</li>
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Default Outbound Access</a> — Understand Azure's default outbound connectivity and how NSGs interact with it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIDR / Subnet Calculator -->
+  <div class="section-collapsible" id="cidrSection">
+    <div class="section-header" onclick="toggleSection('cidr')">
+      <span class="section-toggle" id="cidrToggle">▶</span>
+      <h3>🔢 CIDR / Subnet Calculator</h3>
+    </div>
+    <div class="section-body" id="cidrBody">
+      <div class="cidr-form">
+        <div class="form-group" style="flex:1;"><label>CIDR Notation</label><input type="text" id="cidrInput" placeholder="e.g. 10.0.1.0/24"></div>
+        <button class="btn btn-primary" onclick="calculateCidr()" style="margin-bottom:2px;">Calculate</button>
+        <button class="btn btn-outline" onclick="document.getElementById('cidrInput').value=''; document.getElementById('cidrResults').innerHTML='';" style="margin-bottom:2px;">Clear</button>
+      </div>
+      <div class="cidr-results" id="cidrResults"></div>
+    </div>
+  </div>
+
+  </div><!-- /tab-pane tools -->
+
+  <!-- ═══════ TAB: REFERENCE ═══════ -->
+  <div class="tab-pane" data-tab="reference">
+  <!-- Default Rules (Azure built-in) -->
   <div class="section-collapsible" id="analysisSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('analysis')">
       <span class="section-toggle" id="analysisToggle">▶</span>
-      <h3>⚡ Analysis & Reference</h3>
+      <h3>⚡ Default Rules</h3>
       <span class="section-badge" id="analysisBadge">—</span>
     </div>
     <div class="section-body" id="analysisBody">
@@ -557,76 +782,8 @@
     </div>
   </div>
 
-  <!-- Security & Compliance -->
-  <div class="section-collapsible" id="securitySection" style="display:none;">
-    <div class="section-header" onclick="toggleSection('security')">
-      <span class="section-toggle" id="securityToggle">▶</span>
-      <h3>🛡️ Security & Compliance</h3>
-      <span class="section-badge" id="securityBadge">—</span>
-    </div>
-    <div class="section-body" id="securityBody">
-      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.6;">
-        Your NSG ruleset is automatically assessed against industry security benchmarks. The score reflects common risks such as
-        exposed management ports (RDP/SSH), overly broad address ranges, missing deny rules, and absent rule descriptions.
-        Address any flagged items below to strengthen your security posture.
-      </p>
-      <div id="securityContent"></div>
-      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
-        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
-        <ul style="list-style:none;font-size:12px;line-height:1.8;">
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Overview</a> — How Azure Network Security Groups filter traffic between Azure resources</li>
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/security/benchmark/azure/security-controls-v3-network-security" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Azure Security Benchmark v3 — Network Security</a> — Microsoft's best practice controls for network segmentation and protection</li>
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">How NSGs Work</a> — Understand rule evaluation order, priority, and implicit deny behaviour</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Network Tools (CIDR Calc + What-If + Common Ports) -->
-  <div class="section-collapsible" id="networkToolsSection" style="display:none;">
-    <div class="section-header" onclick="toggleSection('networkTools')">
-      <span class="section-toggle" id="networkToolsToggle">▶</span>
-      <h3>🔧 Network Tools</h3>
-    </div>
-    <div class="section-body" id="networkToolsBody">
-      <!-- What-If Simulator -->
-      <h4 style="font-size:13px;margin-bottom:8px;color:var(--brand-primary);">🔍 What-If Traffic Simulator</h4>
-      <p style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Test whether specific traffic would be allowed or denied by your NSG rules.</p>
-      <div class="whatif-form">
-        <div class="form-group"><label>Direction</label><select id="whatifDirection"><option value="Inbound">Inbound</option><option value="Outbound">Outbound</option></select></div>
-        <div class="form-group"><label>Source IP / Tag</label><input type="text" id="whatifSrcAddr" placeholder="e.g. 10.0.1.5, Internet"></div>
-        <div class="form-group"><label>Source Port</label><input type="text" id="whatifSrcPort" placeholder="e.g. 49152" value="*"></div>
-        <div class="form-group"><label>Dest IP / Tag</label><input type="text" id="whatifDstAddr" placeholder="e.g. 10.1.0.4, VirtualNetwork"></div>
-        <div class="form-group"><label>Dest Port</label><input type="text" id="whatifDstPort" placeholder="e.g. 443"></div>
-        <div class="form-group"><label>Protocol</label><select id="whatifProtocol"><option value="Tcp">TCP</option><option value="Udp">UDP</option><option value="Icmp">ICMP</option><option value="*">Any</option></select></div>
-      </div>
-      <button class="btn btn-primary" id="whatifSimulateBtn" onclick="runWhatIf()">▶ Simulate</button>
-      <div class="whatif-tip" id="whatifTip">👆 Fill in the fields above, then click <strong>Simulate</strong> to test your rules</div>
-      <div id="whatifResults"></div>
-
-      <hr style="border:none;border-top:1px solid var(--border-subtle);margin:20px 0;">
-
-      <!-- CIDR Calculator -->
-      <h4 style="font-size:13px;margin-bottom:8px;color:var(--brand-primary);">🧮 CIDR / Subnet Calculator</h4>
-      <div class="cidr-form">
-        <div class="form-group" style="flex:1;"><label>CIDR Notation</label><input type="text" id="cidrInput" placeholder="e.g. 10.0.1.0/24"></div>
-        <button class="btn btn-primary" onclick="calculateCidr()" style="margin-bottom:2px;">Calculate</button>
-        <button class="btn btn-outline" onclick="document.getElementById('cidrInput').value=''; document.getElementById('cidrResults').innerHTML='';" style="margin-bottom:2px;">Clear</button>
-      </div>
-      <div class="cidr-results" id="cidrResults"></div>
-
-      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
-        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
-        <ul style="list-style:none;font-size:12px;line-height:1.8;">
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#security-rules" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">NSG Security Rules</a> — Properties, evaluation order, and how Azure processes inbound and outbound rules</li>
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Default Outbound Access</a> — Understand Azure's default outbound connectivity and how NSGs interact with it</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <!-- Service Tag Reference -->
-  <div class="section-collapsible" id="serviceTagSection" style="display:none;">
+  <div class="section-collapsible" id="serviceTagSection">
     <div class="section-header" onclick="toggleSection('serviceTags')">
       <span class="section-toggle" id="serviceTagsToggle">▶</span>
       <h3>📖 Azure Service Tag Reference</h3>
@@ -648,10 +805,11 @@
   </div>
 
   <!-- Common Port Reference -->
-  <div class="section-collapsible" id="portsSection" style="display:none;">
+  <div class="section-collapsible" id="portsSection">
     <div class="section-header" onclick="toggleSection('ports')">
       <span class="section-toggle" id="portsToggle">▶</span>
       <h3>📡 Common Port Reference</h3>
+      <span class="section-badge" id="portsBadge"></span>
     </div>
     <div class="section-body" id="portsBody">
       <input type="text" id="portSearch" placeholder="Search ports..." style="width:100%;padding:6px 10px;border:1px solid var(--border-default);border-radius:var(--radius-sm);margin-bottom:8px;font-size:13px;background:var(--bg-layer1);color:var(--text-primary);" oninput="filterPorts()">
@@ -665,6 +823,15 @@
     </div>
   </div>
 
+  </div><!-- /tab-pane reference -->
+
+  <!-- ═══════ TAB: AUDIT ═══════ -->
+  <div class="tab-pane" data-tab="audit">
+  <div class="tab-empty-notice">
+    <div class="tab-empty-icon">📋</div>
+    <h4>No data loaded yet</h4>
+    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — every change you make will be tracked here.</p>
+  </div>
   <!-- Audit Log -->
   <div class="section-collapsible" id="auditSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('audit')">
@@ -679,18 +846,15 @@
       <div style="max-height:300px;overflow-y:auto;" id="auditLogContainer"></div>
     </div>
   </div>
+  </div><!-- /tab-pane audit -->
 
-  <!-- Start from scratch -->
-  <div style="text-align:center;margin-top:12px;" id="scratchSection">
-    <button class="btn btn-outline" onclick="startFromScratch()">Or start from scratch — create a new NSG</button>
-  </div>
 </div>
 
 <!-- Footer -->
 <footer style="text-align:center;padding:24px 16px 28px;font-size:12px;color:var(--text-tertiary);border-top:1px solid var(--border-subtle);margin-top:24px;background:linear-gradient(180deg, transparent 0%, var(--bg-layer2) 100%);">
   <span style="font-weight:600;color:var(--text-secondary);">DJ Tools</span> powered by <strong style="color:var(--brand-primary);">GitHub Copilot CLI</strong> &nbsp;·&nbsp;
   <a href="https://github.com/DarrenJohns/djtools-nsg-editor" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:600;">GitHub ↗</a>
-  <div style="margin-top:8px;font-size:11px;color:var(--text-tertiary);opacity:0.7;">v1.0.0-beta</div>
+  <div style="margin-top:8px;font-size:11px;color:var(--text-tertiary);opacity:0.7;">v1.0.1</div>
 </footer>
 
 <!-- Rule Edit/Add Modal -->
@@ -760,7 +924,7 @@
         <div class="form-group">
           <label>Destination Port Range(s) <span class="required">*</span></label>
           <input type="text" id="ruleDestPort" placeholder="e.g. 80, 443, 8080-8090">
-          <span class="help">Port, range, or *. Comma-separated for multiple. <a href="#" onclick="event.preventDefault();toggleSection('networkTools');" style="color:var(--brand-primary);">📡 Port reference</a></span>
+          <span class="help">Port, range, or *. Comma-separated for multiple. <a href="#" onclick="event.preventDefault();activateTab('reference');" style="color:var(--brand-primary);">📡 Port reference</a></span>
         </div>
         <div class="form-group full-width">
           <label>Description</label>
@@ -810,13 +974,13 @@
       <div id="flushConnectionRow" style="margin-bottom:12px;display:flex;align-items:center;gap:8px;">
         <input type="checkbox" id="flushConnectionToggle" onchange="nsgState.flushConnection=this.checked">
         <label for="flushConnectionToggle" style="font-size:12px;color:var(--text-secondary);">
-          Drop active connections when rules change <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, existing network connections are immediately dropped and re-checked against the new rules. Leave unchecked (default) to let existing connections continue undisrupted. This setting only takes effect when the exported file is deployed to Azure.">ⓘ Applies at deployment — most users should leave unchecked</span>
+          Drop active connections when rules change <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, existing network connections are immediately dropped and re-checked against the new rules. Leave unchecked (default) to let existing connections continue undisrupted. This setting only takes effect when the exported file is deployed to Azure.">⚠️ Applies at deployment — most users should leave unchecked</span>
         </label>
       </div>
       <div id="inlineRow" style="margin-bottom:12px;display:flex;align-items:center;gap:8px;">
         <input type="checkbox" id="inlineAllToggle" onchange="toggleInlineExport(this.checked)">
         <label for="inlineAllToggle" style="font-size:12px;color:var(--text-secondary);">
-          Inline all values <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, all parameter and variable references are replaced with their resolved literal values. Useful when you want a standalone file with no external dependencies.">ⓘ Replaces parameter/variable references with literal values</span>
+          Inline all values <span style="font-size:11px;color:var(--text-tertiary);" title="When enabled, all parameter and variable references are replaced with their resolved literal values. Useful when you want a standalone file with no external dependencies.">⚠️ Replaces parameter/variable references with literal values</span>
         </label>
       </div>
       <div id="inlineNote" style="margin-bottom:12px;display:none;font-size:11px;color:var(--text-tertiary);font-style:italic;">ⓘ This format always uses inline (literal) values</div>
@@ -900,11 +1064,10 @@
 </div>
 
 <!-- Keyboard Shortcuts Modal -->
-<div class="modal-overlay" id="shortcutsModal">
-  <div class="modal" style="width:440px;">
-    <div class="modal-header">
-      <h3>⌨ Keyboard Shortcuts</h3>
-      <button class="modal-close" onclick="closeShortcutsModal()">&times;</button>
+<div class="modal-overlay" id="shortcutsModal" onclick="if(event.target===this)closeShortcutsModal()">
+  <div class="modal" style="max-width:480px;width:90%;overflow:hidden;" role="dialog" aria-modal="true">
+    <div class="modal-banner">
+      <h2>⌨️ Keyboard Shortcuts</h2>
     </div>
     <div class="modal-body">
       <div class="shortcuts-grid">
@@ -917,6 +1080,7 @@
         <div class="shortcut-item"><span class="shortcut-key">Esc</span><span class="shortcut-desc">Close any open modal</span></div>
         <div class="shortcut-item"><span class="shortcut-key">Del</span><span class="shortcut-desc">Delete selected rules</span></div>
       </div>
+      <div class="modal-close-row"><button class="btn btn-outline" onclick="closeShortcutsModal()">Close</button></div>
     </div>
   </div>
 </div>
@@ -961,7 +1125,7 @@ function toggleTheme() {
   const html = document.documentElement;
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
-  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
   localStorage.setItem('nsg-editor-theme', next);
 }
 (function initTheme() {
@@ -971,7 +1135,7 @@ function toggleTheme() {
   else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { theme = 'dark'; }
   if (theme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.addEventListener('DOMContentLoaded', () => { document.getElementById('themeToggle').textContent = '☀️ Light Mode'; });
+    document.addEventListener('DOMContentLoaded', () => { document.getElementById('themeToggle').textContent = '☀️'; });
   }
 })();
 
@@ -980,6 +1144,7 @@ function toggleTheme() {
 // ══════════════════════════════════════════════
 function closeWelcome() {
   document.getElementById('welcomeModal').classList.remove('active');
+  if (typeof activateTab === 'function') activateTab('import');
 }
 
 // ══════════════════════════════════════════════
@@ -1119,7 +1284,7 @@ function timeSince(date) {
   if (s < 86400) return Math.floor(s/3600) + 'h ago';
   return Math.floor(s/86400) + 'd ago';
 }
-document.addEventListener('DOMContentLoaded', () => { autoRestore(); });
+document.addEventListener('DOMContentLoaded', () => { autoRestore(); renderServiceTags(); renderPorts(); });
 
 // ── Keyboard Shortcuts ──
 document.addEventListener('keydown', e => {
@@ -1296,6 +1461,8 @@ function renderPorts(filter = '') {
       <span class="risk-badge ${riskClass}">${p.risk}</span>
     </div>`;
   }).join('');
+  const badge = document.getElementById('portsBadge');
+  if (badge) badge.textContent = `${COMMON_PORTS.length} ports`;
 }
 function filterPorts() { renderPorts(document.getElementById('portSearch').value); }
 let lastFilledPort = null;
@@ -1460,6 +1627,7 @@ const sectionMap = {
   ports: { toggle: 'portsToggle', body: 'portsBody' },
   security: { toggle: 'securityToggle', body: 'securityBody' },
   networkTools: { toggle: 'networkToolsToggle', body: 'networkToolsBody' },
+  cidr: { toggle: 'cidrToggle', body: 'cidrBody' },
   audit: { toggle: 'auditToggle', body: 'auditBody' },
 };
 
@@ -2185,15 +2353,17 @@ function loadNsg(nsg, warnings) {
 }
 
 function showUI() {
-  document.getElementById('dropZone').style.display = 'none';
+  document.body.classList.add('has-data');
+  document.getElementById('dropZone').style.display = '';
   document.getElementById('scratchSection').style.display = 'none';
-  ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
+  ['toolbar','statsSection','analysisSection','rulesSection','serviceTagSection','portsSection','securitySection','networkToolsSection','cidrSection','auditSection'].forEach(id => document.getElementById(id).style.display = '');
   updateDisplay();
   // Auto-expand the rules section after import
   const body = document.getElementById(sectionMap.rules.body);
   const toggle = document.getElementById(sectionMap.rules.toggle);
   if (body && !body.classList.contains('open')) { body.classList.add('open'); toggle.classList.add('open'); }
   const hint = document.getElementById('startHint'); if (hint) hint.style.display = 'none';
+  if (typeof activateTab === 'function') activateTab('summary');
 }
 
 // ══════════════════════════════════════════════
@@ -2363,19 +2533,17 @@ function parseTfvars(content) {
 }
 
 function resetEditor() {
-  if (!confirm('Are you sure? This will clear all rules and reset the editor.')) return;
-  nsgState = { name: '', location: 'location', locationIsParam: true, apiVersion: '2024-05-01', rules: [], warnings: [], flushConnection: false, importContext: null, importedFileName: null, companionFileName: null };
+  if (!confirm('Are you sure? This will clear all rules. The NSG name and location are kept so you can continue adding rules.')) return;
+  nsgState.rules = [];
+  nsgState.warnings = [];
   originalRules = []; undoStack = []; redoStack = []; selectedIndices.clear(); updateUndoRedoButtons();
-  rulesRevision++; analysisCache = null; auditLog = [];
-  clearAutoSave();
-  document.getElementById('dropZone').style.display = '';
-  document.getElementById('scratchSection').style.display = '';
-  ['toolbar','rulesSection','emptyState','warningsPanel','exprBanner','statsSection','analysisSection','portsSection','serviceTagSection','securitySection','networkToolsSection','auditSection'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
+  rulesRevision++; analysisCache = null;
+  logAudit('Clear', 'All rules cleared');
   document.getElementById('bulkBar').classList.remove('active');
-  fileInput.value = '';
+  const rulesTabAlert = document.getElementById('rulesTabAlert');
+  if (rulesTabAlert) { rulesTabAlert.textContent = ''; rulesTabAlert.classList.remove('visible'); }
+  updateDisplay();
+  showToast('All rules cleared');
 }
 
 // ══════════════════════════════════════════════
@@ -2533,6 +2701,17 @@ function updateStats() {
     badgeEl.textContent = `${inbound} in / ${outbound} out`;
     badgeEl.style.color = '';
   }
+  const rulesTabAlert = document.getElementById('rulesTabAlert');
+  if (rulesTabAlert) {
+    if (issueCount > 0) {
+      rulesTabAlert.textContent = `⚠ ${issueCount}`;
+      rulesTabAlert.classList.add('visible');
+      rulesTabAlert.title = `${issueCount} rule issue(s) detected`;
+    } else {
+      rulesTabAlert.textContent = '';
+      rulesTabAlert.classList.remove('visible');
+    }
+  }
 
   // NSG Limits Gauge
   const maxRules = 1000;
@@ -2540,7 +2719,7 @@ function updateStats() {
   const colorClass = pct < 50 ? 'green' : pct < 80 ? 'amber' : 'red';
   document.getElementById('limitsGauge').innerHTML = (() => {
     const segments = 20;
-    const filled = Math.max(1, Math.round((pct / 100) * segments));
+    const filled = pct === 0 ? 0 : Math.max(1, Math.round((pct / 100) * segments));
     const color = pct < 50 ? '#0e7a0d' : pct < 80 ? '#f7630c' : '#c4314b';
     let bars = '';
     for (let i = 0; i < segments; i++) {
@@ -2552,7 +2731,7 @@ function updateStats() {
       <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:var(--bg-layer1);border-radius:var(--radius-sm);border:1px solid var(--border-default);">
         <span style="font-size:12px;font-weight:600;color:var(--text-primary);white-space:nowrap;">📏 Rule Capacity</span>
         <div style="display:flex;gap:2px;">${bars}</div>
-        <span style="font-size:16px;font-weight:700;color:${color};">${pct.toFixed(0)}%</span>
+        <span style="font-size:16px;font-weight:700;color:${pct === 0 ? 'var(--text-secondary)' : color};">${pct.toFixed(0)}%</span>
         <span style="font-size:11px;color:var(--text-secondary);white-space:nowrap;">(${rules.length}/${maxRules})</span>
       </div>
     </div>
@@ -3783,7 +3962,7 @@ function generateArm() {
   const template = {
     '$schema': 'https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#',
     contentVersion: '1.0.0.0',
-    _generator: { name: 'NSG Rule Editor (DJ Tools)', version: '0.0.5' },
+    _generator: { name: 'NSG Rule Editor (DJ Tools)', version: '1.0.1' },
     parameters: armParams,
     ...(Object.keys(armVars).length > 0 ? { variables: armVars } : {}),
     resources: [{
@@ -4350,6 +4529,30 @@ document.querySelectorAll('.col-resize').forEach(handle => {
     document.addEventListener('mouseup', onMouseUp);
   });
 });
+
+/* ── Tab navigation ── */
+function activateTab(key) {
+  document.querySelectorAll('.tab-strip .tab').forEach(b => b.classList.toggle('active', b.dataset.tab === key));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.dataset.tab === key));
+  if (location.hash !== '#' + key) history.replaceState(null, '', '#' + key);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function activateTabFromHash() {
+  const hash = (location.hash || '').replace('#', '');
+  if (!hash) return;
+  const map = {
+    rulesSection: 'rules', emptyState: 'rules', analysisSection: 'reference',
+    statsSection: 'summary',
+    securitySection: 'summary',
+    networkToolsSection: 'tools',
+    serviceTagSection: 'reference', portsSection: 'reference',
+    auditSection: 'audit'
+  };
+  const key = map[hash] || hash;
+  if (document.querySelector(`.tab-pane[data-tab="${key}"]`)) activateTab(key);
+}
+window.addEventListener('hashchange', activateTabFromHash);
+document.addEventListener('DOMContentLoaded', activateTabFromHash);
 
 </script>
 </body>

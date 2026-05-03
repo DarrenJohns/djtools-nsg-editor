@@ -219,4 +219,4 @@ git checkout -b feature/my-new-feature
 
 > *Built with ❤️ using GitHub Copilot CLI, GitHub Actions, and Azure*
 >
-> **Version:** v1.0.0-beta
+> **Version:** v1.0.1

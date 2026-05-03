@@ -9,7 +9,7 @@
 > **A visual tool for Azure network administrators to configure, analyse, and export NSG rulesets — import from BICEP, ARM, Terraform, or CSV, convert between IaC languages, detect and resolve expressions, analyse conflicts and shadows, score security compliance, simulate traffic flows, and export to 6 formats with companion parameter files.**
 
 ![Azure](https://img.shields.io/badge/Azure-NSG-0078D4)
-![Version](https://img.shields.io/badge/version-1.0.0--beta-orange)
+![Version](https://img.shields.io/badge/version-1.0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Built with](https://img.shields.io/badge/built_with-Copilot_CLI-8957e5)
 ![Hosted on](https://img.shields.io/badge/hosted_on-Azure_SWA-0078D4)
