@@ -114,6 +114,19 @@
     border: 1px solid #b3d4f0;
   }
   [data-theme="dark"] .tab-strip .tab .tab-badge { background: #1a2e4a; color: #6db3f2; border-color: #2a5a8a; }
+  .tab-strip .tab .tab-alert {
+    display: none;
+    font-size: 10px;
+    background: var(--status-danger);
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 9px;
+    margin-left: 6px;
+    font-weight: 700;
+    line-height: 1.4;
+    vertical-align: middle;
+  }
+  .tab-strip .tab .tab-alert.visible { display: inline-block; }
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
 
@@ -500,7 +513,7 @@
 <nav class="tab-strip" id="tabStrip" role="tablist" aria-label="App sections">
   <button class="tab active" role="tab" data-tab="import"    onclick="activateTab('import')">📥 Import</button>
   <button class="tab"        role="tab" data-tab="summary"   onclick="activateTab('summary')">📊 Summary</button>
-  <button class="tab"        role="tab" data-tab="rules"     onclick="activateTab('rules')">🔒 Rules</button>
+  <button class="tab"        role="tab" data-tab="rules"     onclick="activateTab('rules')">🔒 Rules<span class="tab-alert" id="rulesTabAlert" title="Rule issues detected"></span></button>
   <button class="tab"        role="tab" data-tab="tools"     onclick="activateTab('tools')">🔧 Tools</button>
   <button class="tab"        role="tab" data-tab="reference" onclick="activateTab('reference')">📚 Reference</button>
   <button class="tab"        role="tab" data-tab="audit"     onclick="activateTab('audit')">📋 Audit Log</button>
@@ -2689,6 +2702,17 @@ function updateStats() {
   } else {
     badgeEl.textContent = `${inbound} in / ${outbound} out`;
     badgeEl.style.color = '';
+  }
+  const rulesTabAlert = document.getElementById('rulesTabAlert');
+  if (rulesTabAlert) {
+    if (issueCount > 0) {
+      rulesTabAlert.textContent = `⚠ ${issueCount}`;
+      rulesTabAlert.classList.add('visible');
+      rulesTabAlert.title = `${issueCount} rule issue(s) detected`;
+    } else {
+      rulesTabAlert.textContent = '';
+      rulesTabAlert.classList.remove('visible');
+    }
   }
 
   // NSG Limits Gauge
