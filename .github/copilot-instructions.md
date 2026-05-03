@@ -29,7 +29,7 @@ This is a **single-file HTML web application** (`index.html`) for configuring Az
 - **Pinning**: third-party actions are pinned to commit SHA — update the `# vX.Y.Z` comment beside each `@<sha>` when bumping.
 
 ## Version Numbering
-- Format: `vX.Y.Z-beta` (currently v1.0.0-beta)
+- Format: `vX.Y.Z` (currently v1.0.1)
 - Update version in **three places**: footer in index.html, ARM generator metadata in index.html, README badge
 - Bump version for feature changes, not doc-only changes
 
