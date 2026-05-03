@@ -567,7 +567,6 @@
       <h3 style="font-size:1.35rem;font-weight:700;color:var(--text-primary);margin:0;">Rule Summary</h3>
     </div>
     <div class="stats-panel" id="statsPanel"></div>
-    <div class="limits-gauge" id="limitsGauge"></div>
   </div>
   </div><!-- /tab-pane summary -->
 
@@ -578,6 +577,7 @@
     <h4>No data loaded yet</h4>
     <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — security rules will appear here for editing.</p>
   </div>
+  <div class="limits-gauge" id="limitsGauge" style="margin-bottom:16px;"></div>
   <!-- Security Rules -->
   <div class="section-collapsible" id="rulesSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('rules')" style="position:relative;">
