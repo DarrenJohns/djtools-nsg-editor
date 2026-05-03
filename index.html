@@ -691,14 +691,8 @@
 
   <!-- ═══════ TAB: TOOLS ═══════ -->
   <div class="tab-pane" data-tab="tools">
-  <div class="tab-empty-notice">
-    <div class="tab-empty-icon">🔧</div>
-    <h4>No data loaded yet</h4>
-    <p><a onclick="activateTab('import')">Go to the Import tab</a> to load an NSG, or start fresh — the What-If Simulator and CIDR Calculator will appear here.</p>
-  </div>
-  <!-- Network Tools (CIDR Calc + What-If + Common Ports) -->
   <!-- What-If Traffic Simulator -->
-  <div class="section-collapsible" id="networkToolsSection" style="display:none;">
+  <div class="section-collapsible" id="networkToolsSection">
     <div class="section-header" onclick="toggleSection('networkTools')">
       <span class="section-toggle" id="networkToolsToggle">▶</span>
       <h3>🔍 What-If Traffic Simulator</h3>
@@ -727,7 +721,7 @@
   </div>
 
   <!-- CIDR / Subnet Calculator -->
-  <div class="section-collapsible" id="cidrSection" style="display:none;">
+  <div class="section-collapsible" id="cidrSection">
     <div class="section-header" onclick="toggleSection('cidr')">
       <span class="section-toggle" id="cidrToggle">▶</span>
       <h3>🧮 CIDR / Subnet Calculator</h3>
