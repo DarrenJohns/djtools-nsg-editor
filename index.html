@@ -644,24 +644,6 @@
     <p>No rules defined. Click <strong>+ Add Rule</strong> or <strong>📋 Templates</strong> to get started.</p>
   </div>
 
-  <!-- Analysis & Reference -->
-  <div class="section-collapsible" id="analysisSection" style="display:none;">
-    <div class="section-header" onclick="toggleSection('analysis')">
-      <span class="section-toggle" id="analysisToggle">▶</span>
-      <h3>⚡ Analysis & Reference</h3>
-      <span class="section-badge" id="analysisBadge">—</span>
-    </div>
-    <div class="section-body" id="analysisBody">
-      <div id="analysisPanels"></div>
-      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
-        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
-        <ul style="list-style:none;font-size:12px;line-height:1.8;">
-          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#default-security-rules" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Default Security Rules</a> — View the 6 built-in rules Azure applies to every NSG (priority 65000–65500)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <!-- Security & Compliance -->
   <div class="section-collapsible" id="securitySection" style="display:none;">
     <div class="section-header" onclick="toggleSection('security')">
@@ -738,6 +720,24 @@
 
   <!-- ═══════ TAB: REFERENCE ═══════ -->
   <div class="tab-pane" data-tab="reference">
+  <!-- Default Rules (Azure built-in) -->
+  <div class="section-collapsible" id="analysisSection" style="display:none;">
+    <div class="section-header" onclick="toggleSection('analysis')">
+      <span class="section-toggle" id="analysisToggle">▶</span>
+      <h3>📖 Default Rules</h3>
+      <span class="section-badge" id="analysisBadge">—</span>
+    </div>
+    <div class="section-body" id="analysisBody">
+      <div id="analysisPanels"></div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--bg-layer2);border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+        <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learn More</div>
+        <ul style="list-style:none;font-size:12px;line-height:1.8;">
+          <li>🔗 <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#default-security-rules" target="_blank" rel="noopener noreferrer" style="color:var(--brand-primary);text-decoration:none;font-weight:500;">Default Security Rules</a> — View the 6 built-in rules Azure applies to every NSG (priority 65000–65500)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- Service Tag Reference -->
   <div class="section-collapsible" id="serviceTagSection" style="display:none;">
     <div class="section-header" onclick="toggleSection('serviceTags')">
@@ -4478,7 +4478,7 @@ function activateTabFromHash() {
   const hash = (location.hash || '').replace('#', '');
   if (!hash) return;
   const map = {
-    rulesSection: 'rules', emptyState: 'rules', analysisSection: 'rules',
+    rulesSection: 'rules', emptyState: 'rules', analysisSection: 'reference',
     statsSection: 'summary',
     securitySection: 'rules',
     networkToolsSection: 'tools',
