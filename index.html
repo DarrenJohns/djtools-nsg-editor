@@ -256,6 +256,7 @@
   .tab-empty-notice p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
   .tab-empty-notice a { color: var(--brand-primary); font-weight: 600; cursor: pointer; }
   body.has-data .tab-empty-notice { display: none; }
+  body:not(.has-data) #limitsGauge { display: none; }
 
   /* ── Analysis Panels ── */
   .analysis-panel { padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 8px; }
