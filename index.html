@@ -1094,6 +1094,7 @@ function toggleTheme() {
 // ══════════════════════════════════════════════
 function closeWelcome() {
   document.getElementById('welcomeModal').classList.remove('active');
+  if (typeof activateTab === 'function') activateTab('import');
 }
 
 // ══════════════════════════════════════════════
