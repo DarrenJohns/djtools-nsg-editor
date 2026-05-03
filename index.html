@@ -70,22 +70,23 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 998;
-    background: rgba(255,255,255, 0.5);
+    background: rgba(255,255,255, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-default);
+    border: none;
     border-radius: var(--radius-md);
     display: flex;
     justify-content: center;
     gap: 2px;
     max-width: 1400px;
     width: calc(100% - 48px);
-    padding: 0 24px;
+    padding: 0 16px;
     overflow-x: auto;
     scrollbar-width: thin;
     box-shadow: var(--shadow-sm);
   }
-  [data-theme="dark"] .tab-strip { background: rgba(30,33,40, 0.55); }
+  [data-theme="dark"] .tab-strip { background: rgba(30,33,40, 0.6); }
+  .tab-strip::-webkit-scrollbar { height: 6px; }
   .tab-strip .tab {
     flex: 0 0 auto;
     background: transparent;
