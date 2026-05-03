@@ -136,9 +136,9 @@
   .rule-actions { display: flex; gap: 3px; white-space: nowrap; overflow: visible; align-items: center; flex-wrap: nowrap; }
 
   /* ── Welcome Modal ── */
-  .welcome-overlay { position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .welcome-overlay { position: fixed; inset: 0; z-index: 10001; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
   .welcome-overlay.active { opacity: 1; pointer-events: auto; }
-  .welcome-card { background: var(--bg-layer1); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 540px; width: 90%; overflow: hidden; }
+  .welcome-card { background: var(--bg-layer1); border-radius: var(--radius-md); box-shadow: var(--shadow-md); max-width: 540px; width: 90%; overflow: hidden; }
   .welcome-banner { background: linear-gradient(135deg, #0f6cbd 0%, #0e4a8a 100%); color: white; padding: 28px 32px 20px; text-align: center; }
   .welcome-banner h2 { font-size: 22px; margin-bottom: 6px; }
   .welcome-banner p { font-size: 14px; opacity: 0.85; }
@@ -146,7 +146,7 @@
   .welcome-body ul { list-style: none; margin-bottom: 20px; }
   .welcome-body li { padding: 8px 0; display: flex; gap: 10px; align-items: flex-start; white-space: nowrap; }
   .welcome-body li span { font-size: 18px; flex-shrink: 0; }
-  .welcome-body .btn { width: 100%; justify-content: center; font-size: 14px; padding: 10px; }
+  .welcome-body .btn { width: 100%; justify-content: center; font-size: 14px; padding: 10px; display: flex; }
 
   /* ── Drop Zone ── */
   .drop-zone { border: 2px dashed #a0c4e8; border-radius: var(--radius-lg); padding: 36px; text-align: center; cursor: pointer; transition: all 0.2s; background: linear-gradient(180deg, #f0f7ff 0%, #fafcff 100%); position: relative; }
